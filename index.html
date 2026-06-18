@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hana's Chinese Learning Hub - Bút Phép Thuật</title>
-  <!-- Google Fonts for child-friendly typography -->
+  <title>Hana's Chinese Learning Hub</title>
+  <!-- Google Fonts for Nunito font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Nunito:wght@300..900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
@@ -12,135 +12,250 @@
 </head>
 <body>
 
-  <!-- App Container -->
-  <div class="app-container">
+  <!-- App Wrapper representing the tablet layout -->
+  <div class="app-wrapper">
     
-    <!-- Dashboard Header -->
-    <header class="dashboard-header">
-      <div class="profile-card">
-        <div class="profile-avatar">👧</div>
-        <div class="profile-info">
-          <h2>Hana's Learning Hub</h2>
-          <p class="profile-subtitle">Chào mừng bé Hana đến với thế giới Tiếng Trung! 🌟</p>
-        </div>
-      </div>
-      
-      <!-- General Stats -->
-      <div class="stats-bar">
-        <div class="stat-box">
-          <span class="stat-icon">🏆</span>
-          <div class="stat-content">
-            <span class="stat-val" id="total-points">0</span>
-            <span class="stat-label">Tổng Điểm</span>
-          </div>
-        </div>
-        <div class="stat-box">
-          <span class="stat-icon">📚</span>
-          <div class="stat-content">
-            <span class="stat-val" id="completed-count">0/1</span>
-            <span class="stat-label">Bài Đã Học</span>
-          </div>
-        </div>
-        <div class="stat-box">
-          <span class="stat-icon">🎖️</span>
-          <div class="stat-content">
-            <span class="stat-val" id="badge-name">Học Giả Mới</span>
-            <span class="stat-label">Danh Hiệu</span>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- Main Section -->
-    <main class="dashboard-main">
-      
-      <div class="section-title-box">
-        <h2>🚀 Hành Trình Học Tập Của Hana</h2>
-        <p>Bé hãy chọn một bài học dưới đây để khám phá từ vựng và chơi game nhé!</p>
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+      <!-- Logo/Brand -->
+      <div class="brand-box">
+        <div class="brand-logo">✏️</div>
+        <h2>Hana Chinese</h2>
       </div>
 
-      <!-- Lessons Grid -->
-      <div class="lessons-grid">
+      <!-- Sidebar Navigation -->
+      <nav class="sidebar-nav">
+        <a href="#" class="nav-item active">
+          <span class="nav-item-icon">🏠</span> Home
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-item-icon">✏️</span> Training
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-item-icon">🏆</span> Progress
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-item-icon">📊</span> Statistics
+        </a>
+        <a href="#" class="nav-item">
+          <span class="nav-item-icon">⚙️</span> Settings
+        </a>
+      </nav>
+
+      <!-- Sidebar Today's Progress Widget -->
+      <div class="sidebar-widget">
+        <h3>Today's Progress</h3>
+        <div class="progress-circle-box">
+          <svg class="progress-ring" width="100" height="100">
+            <circle class="progress-ring-bg" stroke="#f1f5f9" stroke-width="8" fill="transparent" r="38" cx="50" cy="50"/>
+            <circle id="progress-ring-bar" class="progress-ring-bar" stroke="#8b5cf6" stroke-width="8" fill="transparent" r="38" cx="50" cy="50"/>
+          </svg>
+          <div class="progress-percentage"><span id="progress-percent-val">0</span>%</div>
+        </div>
+        <p class="widget-desc">Hoàn thành bài học để nhận 10 kim cương! 💎</p>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-panel">
+      
+      <!-- Top Bar -->
+      <header class="top-bar">
+        <div class="user-welcome">
+          <div class="user-avatar">👧</div>
+          <div class="welcome-text">
+            <h1>Hi Hana!</h1>
+          </div>
+        </div>
         
-        <!-- Lesson 67: Unlocked -->
-        <div class="lesson-card unlocked" id="card-lesson-67">
-          <div class="lesson-card-banner">
-            <span class="lesson-num">Bài 67</span>
+        <div class="top-stats">
+          <div class="top-stat-item" title="Bài học hoàn thành">
+            <span class="stat-icon-yellow">🔔</span>
+            <span id="bell-count">0</span>
           </div>
-          <div class="lesson-card-body">
-            <h3 class="lesson-title-cn">坐火车离开</h3>
-            <p class="lesson-title-py">Zuò huǒchē líkāi</p>
-            <h4 class="lesson-title-vi">Rời Đi Bằng Tàu Hỏa</h4>
-            
-            <div class="lesson-status-bar">
-              <span class="status-badge" id="badge-status-67">Chưa học</span>
-              <span class="score-text" id="score-text-67">Điểm: --</span>
+          <div class="top-stat-item" title="Kim cương tích lũy">
+            <span class="stat-icon-blue">💎</span>
+            <span id="diamond-count">0</span>
+          </div>
+          <div class="profile-dropdown">
+            <span class="profile-name">Hana</span>
+            <span class="dropdown-arrow">▼</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Section: Your Today's Plan -->
+      <section class="dashboard-section">
+        <div class="section-header">
+          <h2>Your today's plan</h2>
+          <span class="section-link">➔</span>
+        </div>
+        
+        <div class="plan-cards-grid">
+          
+          <!-- Card 67: Active (Listening/Train Theme) -->
+          <div class="plan-card cyan-card unlocked" id="card-67">
+            <div class="card-info">
+              <h3>Bài 67</h3>
+              <p class="card-subtitle">坐火车离开 (Rời đi bằng tàu hỏa)</p>
+              <p class="card-details">23 Từ vựng • Có Slides & Game</p>
+              <a href="lessons/lesson_67.html" class="card-btn">Start</a>
             </div>
-            
-            <a href="lessons/lesson_67.html" class="play-lesson-btn">Học Ngay ➡️</a>
-          </div>
-        </div>
-
-        <!-- Lesson 68: Locked -->
-        <div class="lesson-card locked">
-          <div class="lesson-card-banner">
-            <span class="lesson-num">Bài 68</span>
-            <div class="lock-overlay">🔒</div>
-          </div>
-          <div class="lesson-card-body">
-            <h3 class="lesson-title-cn">魔法笔</h3>
-            <p class="lesson-title-py">Mófǎbǐ</p>
-            <h4 class="lesson-title-vi">Chiếc Bút Phép Thuật</h4>
-            
-            <div class="lesson-status-bar">
-              <span class="status-badge locked">Chưa mở khóa</span>
+            <div class="card-illustration">
+              <!-- Inline Train SVG graphic to look identical to Kiditorial style -->
+              <svg viewBox="0 0 120 70" class="svg-illust">
+                <rect x="10" y="35" width="60" height="25" rx="5" fill="#ffffff" opacity="0.85"/>
+                <rect x="75" y="25" width="35" height="35" rx="5" fill="#ffffff"/>
+                <circle x="0" y="0" r="10" cx="30" cy="63" fill="#1e293b"/>
+                <circle x="0" y="0" r="10" cx="90" cy="63" fill="#1e293b"/>
+                <circle x="0" y="0" r="6" cx="30" cy="63" fill="#f8fafc"/>
+                <circle x="0" y="0" r="6" cx="90" cy="63" fill="#f8fafc"/>
+                <rect x="25" y="10" width="8" height="15" fill="#facc15"/>
+                <rect x="80" y="12" width="20" height="10" rx="2" fill="#0284c7"/>
+              </svg>
             </div>
-            <button class="play-lesson-btn disabled" disabled>Khóa 🔒</button>
+            <div class="score-badge-overlay" id="score-badge-67" style="display: none;">Done: 50/50</div>
           </div>
-        </div>
 
-        <!-- Lesson 69: Locked -->
-        <div class="lesson-card locked">
-          <div class="lesson-card-banner">
-            <span class="lesson-num">Bài 69</span>
-            <div class="lock-overlay">🔒</div>
-          </div>
-          <div class="lesson-card-body">
-            <h3 class="lesson-title-cn">去中国</h3>
-            <p class="lesson-title-py">Qù Zhōngguó</p>
-            <h4 class="lesson-title-vi">Đi Trung Quốc</h4>
-            
-            <div class="lesson-status-bar">
-              <span class="status-badge locked">Chưa mở khóa</span>
+          <!-- Card 68: Locked (Reading) -->
+          <div class="plan-card pink-card locked">
+            <div class="card-info">
+              <h3>Bài 68</h3>
+              <p class="card-subtitle">魔法笔 (Chiếc bút phép thuật)</p>
+              <p class="card-details">Luyện đọc • Khóa</p>
+              <button class="card-btn disabled" disabled>Start</button>
             </div>
-            <button class="play-lesson-btn disabled" disabled>Khóa 🔒</button>
+            <div class="card-illustration">
+              <svg viewBox="0 0 120 70" class="svg-illust">
+                <rect x="30" y="15" width="40" height="50" rx="3" fill="#ffffff" opacity="0.85"/>
+                <rect x="35" y="10" width="40" height="50" rx="3" fill="#ffffff"/>
+                <line x1="45" y1="20" x2="65" y2="20" stroke="#f43f5e" stroke-width="3"/>
+                <line x1="45" y1="30" x2="65" y2="30" stroke="#f43f5e" stroke-width="3"/>
+                <line x1="45" y1="40" x2="65" y2="40" stroke="#f43f5e" stroke-width="3"/>
+                <polygon points="100,10 110,25 90,25" fill="#facc15"/>
+              </svg>
+            </div>
+            <div class="lock-card-overlay">🔒</div>
+          </div>
+
+          <!-- Card 69: Locked (Vocabulary) -->
+          <div class="plan-card purple-card locked">
+            <div class="card-info">
+              <h3>Bài 69</h3>
+              <p class="card-subtitle">去中国 (Đi Trung Quốc)</p>
+              <p class="card-details">Học từ mới • Khóa</p>
+              <button class="card-btn disabled" disabled>Start</button>
+            </div>
+            <div class="card-illustration">
+              <svg viewBox="0 0 120 70" class="svg-illust">
+                <circle cx="60" cy="35" r="28" fill="#ffffff" opacity="0.85"/>
+                <rect x="45" y="25" width="30" height="20" rx="4" fill="#a855f7"/>
+                <text x="60" y="39" font-family="'Nunito'" font-size="10" fill="#ffffff" text-anchor="middle" font-weight="bold">lang</text>
+              </svg>
+            </div>
+            <div class="lock-card-overlay">🔒</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Bottom Layout Section: Training, Badges and Statistics -->
+      <div class="dashboard-bottom-grid">
+        
+        <!-- Bottom Left: Training Card -->
+        <div class="bottom-column">
+          <div class="section-header">
+            <h2>Training</h2>
+            <span class="section-link">➔</span>
+          </div>
+          <div class="training-card">
+            <div class="training-info">
+              <h3>Grammar training</h3>
+              <p>Luyện tập cấu trúc ngữ pháp và trắc nghiệm câu hỏi.</p>
+              <a href="lessons/lesson_67.html" class="training-btn">Continue</a>
+            </div>
+            <div class="training-illust">
+              ✍️
+            </div>
           </div>
         </div>
 
-      </div>
-
-      <!-- Encouragement Mascot Card -->
-      <div class="mascot-encouragement">
-        <div class="mascot-avatar">✏️</div>
-        <div class="mascot-bubble">
-          <p><strong>Bút Thần Kỳ nhắn nhủ:</strong> "Hana đang làm rất tốt! Hãy học bài 67 thật chăm chỉ để đạt điểm tối đa và gửi kết quả về Google Chat khoe mẹ nhé! Cố lên con yêu!"</p>
+        <!-- Upper Right: Achievements Progress -->
+        <div class="bottom-column">
+          <div class="section-header">
+            <h2>Progress</h2>
+            <span class="section-link">➔</span>
+          </div>
+          <div class="badges-grid">
+            <!-- Badge 1: Controller Unlocked -->
+            <div class="badge-item unlocked" title="Học giả xuất phát">
+              <div class="badge-wings">👼</div>
+              <div class="badge-icon-bg">🎮</div>
+            </div>
+            <!-- Badge 2: Shoes Unlocked if score is max -->
+            <div class="badge-item locked" id="badge-shoes" title="Chạy nhanh vượt mốc">
+              <div class="badge-wings">👼</div>
+              <div class="badge-icon-bg">👟</div>
+            </div>
+            <!-- Badge 3: Star -->
+            <div class="badge-item locked" id="badge-star" title="Trạng nguyên tương lai">
+              <div class="badge-wings">👼</div>
+              <div class="badge-icon-bg">⭐</div>
+            </div>
+            <!-- Badge 4: Pen -->
+            <div class="badge-item locked" id="badge-pen" title="Bút thần kỳ">
+              <div class="badge-wings">👼</div>
+              <div class="badge-icon-bg">✏️</div>
+            </div>
+          </div>
         </div>
+
+        <!-- Bottom Right: Statistics Weekly Chart -->
+        <div class="bottom-column">
+          <div class="section-header">
+            <h2>Statistics</h2>
+            <span class="section-link">➔</span>
+          </div>
+          <div class="chart-card">
+            <div class="chart-bars">
+              <div class="chart-bar-container">
+                <div class="chart-bar" style="height: 45%;"></div>
+                <span class="chart-day">Mon</span>
+              </div>
+              <div class="chart-bar-container">
+                <div class="chart-bar" style="height: 70%;"></div>
+                <span class="chart-day">Tue</span>
+              </div>
+              <div class="chart-bar-container">
+                <div class="chart-bar active" id="chart-bar-today" style="height: 0%;">
+                  <div class="chart-tooltip" id="chart-tooltip-val">0m</div>
+                </div>
+                <span class="chart-day">Wed</span>
+              </div>
+              <div class="chart-bar-container">
+                <div class="chart-bar" style="height: 25%;"></div>
+                <span class="chart-day">Thu</span>
+              </div>
+              <div class="chart-bar-container">
+                <div class="chart-bar" style="height: 0%;"></div>
+                <span class="chart-day">Fri</span>
+              </div>
+              <div class="chart-bar-container">
+                <div class="chart-bar" style="height: 0%;"></div>
+                <span class="chart-day">Sat</span>
+              </div>
+              <div class="chart-bar-container">
+                <div class="chart-bar" style="height: 0%;"></div>
+                <span class="chart-day">Sun</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="dashboard-footer">
-      <p>© 2026 Hana Learning Chinese. Designed with love ❤️</p>
-    </footer>
-
-    <!-- Background Decorations -->
-    <div class="bg-decorations">
-      <div class="cloud cloud-slow">☁️</div>
-      <div class="cloud cloud-fast">☁️</div>
-      <div class="star star-1">⭐</div>
-      <div class="star star-2">✨</div>
-    </div>
   </div>
 
   <script src="app.js"></script>
