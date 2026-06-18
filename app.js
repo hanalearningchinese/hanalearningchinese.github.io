@@ -14,21 +14,21 @@ function updateDashboardStats() {
       completed: localStorage.getItem('lesson_67_completed') === 'true',
       score: parseInt(localStorage.getItem('lesson_67_score') || '0'),
       url: 'lessons/lesson_67.html',
-      yt: 'https://www.youtube.com/watch?v=VzLplLkIFmw&list=PLZ27m2K2W5n4YTZYZ3M2z2nn81gjYRFNx',
+      yt: 'https://www.youtube.com/watch?v=aFV_dJVB7MY',
       unlocked: true // First lesson is always unlocked
     },
     68: {
       completed: localStorage.getItem('lesson_68_completed') === 'true',
       score: parseInt(localStorage.getItem('lesson_68_score') || '0'),
       url: 'lessons/lesson_68.html',
-      yt: 'https://www.youtube.com/watch?v=VzLplLkIFmw&list=PLZ27m2K2W5n4YTZYZ3M2z2nn81gjYRFNx',
+      yt: 'https://www.youtube.com/watch?v=6t6XPw9J9-Y',
       unlocked: false // Unlocked if 67 is completed
     },
     69: {
       completed: localStorage.getItem('lesson_69_completed') === 'true',
       score: parseInt(localStorage.getItem('lesson_69_score') || '0'),
       url: 'lessons/lesson_69.html',
-      yt: 'https://www.youtube.com/watch?v=VzLplLkIFmw&list=PLZ27m2K2W5n4YTZYZ3M2z2nn81gjYRFNx',
+      yt: 'https://www.youtube.com/watch?v=9xZvrLqiqTo',
       unlocked: false // Unlocked if 68 is completed
     }
   };
