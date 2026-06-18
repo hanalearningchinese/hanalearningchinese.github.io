@@ -342,6 +342,52 @@ body {
   box-shadow: var(--shadow-md);
 }
 
+.lesson-card-actions {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.yt-watch-btn {
+  flex: 1;
+  padding: 12px;
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: var(--border-radius-sm);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  box-shadow: var(--shadow-sm);
+  background: #ef4444;
+  color: #ffffff;
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.yt-watch-btn:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.yt-playlist-link {
+  color: #ef4444;
+  text-decoration: none;
+  font-weight: 700;
+  border-bottom: 2px dashed #ef4444;
+  transition: all 0.2s ease;
+}
+
+.yt-playlist-link:hover {
+  color: #dc2626;
+  border-bottom-style: solid;
+}
+
 .locked .play-lesson-btn.disabled {
   background: #cbd5e1;
   color: #94a3b8;
