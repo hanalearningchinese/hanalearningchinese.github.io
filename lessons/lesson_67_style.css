@@ -140,6 +140,19 @@ body {
   box-shadow: var(--shadow-md);
 }
 
+.yt-header-btn {
+  text-decoration: none;
+  background: #ef4444;
+  color: #ffffff;
+  border-color: #ef4444;
+}
+
+.yt-header-btn:hover {
+  background: #dc2626;
+  border-color: #dc2626;
+  color: #ffffff;
+}
+
 .control-btn svg {
   fill: var(--color-primary);
 }
