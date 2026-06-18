@@ -1,29 +1,29 @@
 /**
- * GOOGLE APPS SCRIPT: SECURE API PROXY FOR HANA'S CHINESE LEARNING APP
+ * GOOGLE APPS SCRIPT: SECURE API PROXY FOR HANA'S CHINESE LEARNING APP (TELEGRAM EDITION)
  * 
  * Huong dan su dung:
- * 1. Truy cap https://script.google.com va dang nhap bang tai khoan Google cua chi.
+ * 1. Truy cap https://script.google.com va dang nhap bang Gmail cua chi.
  * 2. Nhan "New Project" (Du an moi).
  * 3. Xoa het code cu va dan toan bo doan code nay vao.
- * 4. Thay the gia tri cua GOOGLE_CHAT_WEBHOOK_URL bang link webhook nhom chat cua chi.
- * 5. Nhan nut Save (Bieu tuong dia mem).
- * 6. Nhan "Deploy" (Trien khai) -> "New deployment" (Trien khai moi).
- * 7. Chon loai trien khai la "Web app" (Ung dung Web) bang cach nhan vao bieu tuong banh rang.
- * 8. Cau hinh trien khai:
- *    - Description: Hana Chinese Proxy
- *    - Execute as (Thuc thi duoi danh nghia): Me (Toi)
- *    - Who has access (Ai co quyen truy cap): Anyone (Moi nguoi) -> Dieu nay rat quan trong de web goi duoc API!
- * 9. Nhan Deploy. Google se yeu cau cap quyen (Authorize Access), chi nhan "Continue", chon email, nhan "Advanced" va nhan "Go to Untitled project (unsafe)" roi nhan "Allow".
- * 10. Copy lay duong dan "Web app URL" (co dang https://script.google.com/macros/s/.../exec) 
- *     va dan vao tuc muc config.js o may cua chi.
+ * 4. Nhan nut Save (Bieu tuong dia mem).
+ * 5. Nhan "Deploy" (Trien khai) -> "New deployment" (Trien khai moi).
+ * 6. Chon loai trien khai la "Web app" (Ung dung Web) bang cach nhan vao bieu tuong banh rang.
+ * 7. Cau hinh trien khai:
+ *    - Description: Hana Chinese Telegram Proxy
+ *    - Execute as: Me (Toi)
+ *    - Who has access: Anyone (Moi nguoi)
+ * 8. Nhan Deploy. Google se yeu cau cap quyen (Authorize Access), chi nhan tiep tuc va cho phep.
+ * 9. Copy lay duong dan "Web app URL" (co dang https://script.google.com/macros/s/.../exec) 
+ *     va dan vao file config.js o may cua chi.
  */
 
-// 1. CAU HINH CAC MA KHOA BAO MAT (Nam an toan tren Cloud cua Google, khong bi lo ra ngoai)
-const GEMINI_API_KEY = "DÁN_API_KEY_GEMINI_CỦA_CHỊ_VÀO_ĐÂY"; // API Key Google AI Studio (Thay thế mã khóa của chị ở đây)
-const GOOGLE_CHAT_WEBHOOK_URL = "DÁN_LINK_WEBHOOK_GOOGLE_CHAT_VÀO_ĐÂY"; // Link webhook group chat
+// 1. CAU HINH BAO MAT (Chay tren Cloud cua Google, an toan hoan toan)
+const GEMINI_API_KEY = "DÁN_API_KEY_GEMINI_CỦA_CHỊ_VÀO_ĐÂY"; // API Key Google AI Studio
+const TELEGRAM_BOT_TOKEN = "DÁN_TELEGRAM_BOT_TOKEN_CỦA_CHỊ_VÀO_ĐÂY"; // Token Bot Telegram cua chi
+const TELEGRAM_CHAT_ID = "DÁN_TELEGRAM_CHAT_ID_CỦA_CHỊ_VÀO_ĐÂY"; // ID nhom chat Telegram
+const TELEGRAM_THREAD_ID = 2; // ID Topic 2 (message_thread_id)
 
 function doPost(e) {
-  // Ho tro CORS
   const headers = {
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
@@ -40,8 +40,8 @@ function doPost(e) {
     // 2. Goi Google AI Studio (Gemini API) de lay nhan xet
     const aiComment = getGeminiComment(student, lesson, score);
     
-    // 3. Gui thong tin phieu diem va nhan xet cua AI den Google Chat Group
-    sendToGoogleChat(student, lesson, score, date, aiComment);
+    // 3. Gui thong bao diem va nhan xet cua AI vao Telegram Group (co Topic)
+    sendToTelegram(student, lesson, score, date, aiComment);
     
     return ContentService.createTextOutput(JSON.stringify({ status: "success", aiComment: aiComment }))
                          .setMimeType(ContentService.MimeType.JSON)
@@ -55,11 +55,11 @@ function doPost(e) {
 }
 
 function doGet(e) {
-  return ContentService.createTextOutput("Hana Chinese Proxy Active!")
+  return ContentService.createTextOutput("Hana Chinese Telegram Proxy Active!")
                        .setHeaders({ "Access-Control-Allow-Origin": "*" });
 }
 
-// Ham goi Gemini API de nhan xet diem so cho be
+// Ham goi Gemini API de lay nhan xet
 function getGeminiComment(student, lesson, score) {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${GEMINI_API_KEY}`;
   
@@ -87,7 +87,6 @@ Hãy giữ giọng văn dễ thương, sử dụng các biểu tượng cảm x�
   try {
     const response = UrlFetchApp.fetch(url, options);
     const json = JSON.parse(response.getContentText());
-    
     if (json.candidates && json.candidates[0].content.parts[0].text) {
       return json.candidates[0].content.parts[0].text.trim();
     }
@@ -97,74 +96,31 @@ Hãy giữ giọng văn dễ thương, sử dụng các biểu tượng cảm x�
   }
 }
 
-// Ham gui thong tin va phieu diem qua Google Chat Webhook
-function sendToGoogleChat(student, lesson, score, date, aiComment) {
-  if (!GOOGLE_CHAT_WEBHOOK_URL || GOOGLE_CHAT_WEBHOOK_URL.includes("WEBHOOK")) {
-    Logger.log("Chua cau hinh Webhook URL!");
-    return;
-  }
+// Ham gui tin nhan dang HTML vao dung Topic 2 cua Telegram Group
+function sendToTelegram(student, lesson, score, date, aiComment) {
+  const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
   
-  // Xay dung giao dien dang the (Card V2) trong Google Chat cuc dep cho Hana
-  const card = {
-    cardsV2: [{
-      cardId: "hanaScoreCard",
-      card: {
-        header: {
-          title: `BÁO CÁO HỌC TẬP - ${student.toUpperCase()}`,
-          subtitle: `Bài học: ${lesson}`,
-          imageUrl: "https://fonts.gstatic.com/s/i/shortterm/release/googleglyph/36px.png",
-          imageType: "CIRCLE"
-        },
-        sections: [
-          {
-            header: "Kết quả bài tập",
-            widgets: [
-              {
-                decoratedText: {
-                  startIcon: { emoji: "🏆" },
-                  text: `<b>Điểm số: <font color=\"#10b981\">${score} / 50 điểm</font></b>`,
-                  bottomLabel: `Ngày học: ${date}`
-                }
-              }
-            ]
-          },
-          {
-            header: "Nhận xét từ giáo viên AI ✏️",
-            widgets: [
-              {
-                textParagraph: {
-                  text: aiComment.replace(/\n/g, "<br>")
-                }
-              }
-            ]
-          },
-          {
-            widgets: [
-              {
-                buttonList: {
-                  buttons: [{
-                    text: "Xem Trang Học Tập",
-                    onClick: {
-                      openLink: {
-                        url: "https://hanalearningchinese.github.io/"
-                      }
-                    }
-                  }]
-                }
-              }
-            ]
-          }
-        ]
-      }
-    }]
+  const text = `🏆 <b>BÁO CÁO HỌC TẬP - ${student.toUpperCase()}</b>\n\n` +
+               `📚 <b>Bài học:</b> ${lesson}\n` +
+               `📅 <b>Ngày học:</b> ${date}\n` +
+               `⭐ <b>Điểm số:</b> <code>${score} / 50 điểm</code>\n\n` +
+               `✏️ <b>Nhận xét từ giáo viên AI:</b>\n<i>${aiComment}</i>\n\n` +
+               `🔗 <a href="https://hanalearningchinese.github.io/">Vào Trang Học Tập Của Hana</a>`;
+               
+  const payload = {
+    chat_id: TELEGRAM_CHAT_ID,
+    message_thread_id: TELEGRAM_THREAD_ID,
+    text: text,
+    parse_mode: "HTML",
+    disable_web_page_preview: true
   };
   
   const options = {
     method: "post",
     contentType: "application/json",
-    payload: JSON.stringify(card),
+    payload: JSON.stringify(payload),
     muteHttpExceptions: true
   };
   
-  UrlFetchApp.fetch(GOOGLE_CHAT_WEBHOOK_URL, options);
+  UrlFetchApp.fetch(url, options);
 }
