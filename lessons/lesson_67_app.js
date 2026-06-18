@@ -1,4 +1,4 @@
-// ==========================================================================
+﻿// ==========================================================================
 // APP LOGIC: LESSON 67
 // Includes Vocabulary data, Web Audio, TTS, Games, PDF generation & Google Chat
 // ==========================================================================
@@ -886,3 +886,4 @@ function showModal({ title, message, stats, actionText, actionCallback, showRepo
   
   overlay.classList.add('active');
 }
+
