@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bút Phép Thuật 67: Chuyến Tàu Học Tiếng Trung</title>
+  <title>Hana's Chinese Learning Hub - Bút Phép Thuật</title>
   <!-- Google Fonts for child-friendly typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@300..700&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Nunito:wght@300..900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,177 +15,126 @@
   <!-- App Container -->
   <div class="app-container">
     
-    <!-- Header Area -->
-    <header class="app-header">
-      <div class="header-logo">
-        <span class="magic-star">✨</span>
-        <h1>Bút Phép Thuật 67: <span>坐火车离开</span></h1>
+    <!-- Dashboard Header -->
+    <header class="dashboard-header">
+      <div class="profile-card">
+        <div class="profile-avatar">👧</div>
+        <div class="profile-info">
+          <h2>Hana's Learning Hub</h2>
+          <p class="profile-subtitle">Chào mừng bé Hana đến với thế giới Tiếng Trung! 🌟</p>
+        </div>
       </div>
-      <div class="audio-controls">
-        <button id="btn-sound-toggle" class="control-btn" title="Bật/Tắt âm thanh game">
-          <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
-            <path id="sound-icon-path" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" fill="currentColor"/>
-          </svg>
-          <span class="btn-text">Âm thanh: Bật</span>
-        </button>
+      
+      <!-- General Stats -->
+      <div class="stats-bar">
+        <div class="stat-box">
+          <span class="stat-icon">🏆</span>
+          <div class="stat-content">
+            <span class="stat-val" id="total-points">0</span>
+            <span class="stat-label">Tổng Điểm</span>
+          </div>
+        </div>
+        <div class="stat-box">
+          <span class="stat-icon">📚</span>
+          <div class="stat-content">
+            <span class="stat-val" id="completed-count">0/1</span>
+            <span class="stat-label">Bài Đã Học</span>
+          </div>
+        </div>
+        <div class="stat-box">
+          <span class="stat-icon">🎖️</span>
+          <div class="stat-content">
+            <span class="stat-val" id="badge-name">Học Giả Mới</span>
+            <span class="stat-label">Danh Hiệu</span>
+          </div>
+        </div>
       </div>
     </header>
 
-    <!-- Navigation Tabs -->
-    <nav class="app-nav">
-      <button class="nav-tab active" data-target="section-lesson">
-        <span class="nav-icon">📖</span> Học Từ Vựng
-      </button>
-      <button class="nav-tab" data-target="section-game-match">
-        <span class="nav-icon">🚂</span> Ghép Từ Chạy Tàu
-      </button>
-      <button class="nav-tab" data-target="section-game-quiz">
-        <span class="nav-icon">🎯</span> Trắc Nghiệm Hành Trình
-      </button>
-    </nav>
+    <!-- Main Section -->
+    <main class="dashboard-main">
+      
+      <div class="section-title-box">
+        <h2>🚀 Hành Trình Học Tập Của Hana</h2>
+        <p>Bé hãy chọn một bài học dưới đây để khám phá từ vựng và chơi game nhé!</p>
+      </div>
 
-    <!-- Main Content Area -->
-    <main class="app-main">
-
-      <!-- Section: Lesson Slides -->
-      <section id="section-lesson" class="tab-content active">
-        <div class="lesson-layout">
-          <!-- Slide Container -->
-          <div class="slide-card-wrapper">
-            <div id="slide-card" class="slide-card">
-              <!-- Content injected by JS -->
+      <!-- Lessons Grid -->
+      <div class="lessons-grid">
+        
+        <!-- Lesson 67: Unlocked -->
+        <div class="lesson-card unlocked" id="card-lesson-67">
+          <div class="lesson-card-banner">
+            <span class="lesson-num">Bài 67</span>
+          </div>
+          <div class="lesson-card-body">
+            <h3 class="lesson-title-cn">坐火车离开</h3>
+            <p class="lesson-title-py">Zuò huǒchē líkāi</p>
+            <h4 class="lesson-title-vi">Rời Đi Bằng Tàu Hỏa</h4>
+            
+            <div class="lesson-status-bar">
+              <span class="status-badge" id="badge-status-67">Chưa học</span>
+              <span class="score-text" id="score-text-67">Điểm: --</span>
             </div>
             
-            <!-- Slide Navigation Controls -->
-            <div class="slide-controls">
-              <button id="btn-prev-slide" class="slide-nav-btn">⬅️ Trước</button>
-              <div class="slide-indicator">
-                <span id="current-slide-num">1</span> / <span id="total-slides-num">23</span>
-              </div>
-              <button id="btn-next-slide" class="slide-nav-btn">Sau ➡️</button>
-            </div>
-          </div>
-
-          <!-- Vocabulary List Overview -->
-          <div class="vocab-sidebar">
-            <h3>Danh sách từ (<span id="vocab-count">0</span>)</h3>
-            <div class="vocab-quick-list" id="vocab-quick-list">
-              <!-- List items injected by JS -->
-            </div>
+            <a href="lessons/lesson_67.html" class="play-lesson-btn">Học Ngay ➡️</a>
           </div>
         </div>
-      </section>
 
-      <!-- Section: Matching Game -->
-      <section id="section-game-match" class="tab-content">
-        <div class="game-instructions">
-          <h2>🚂 Trò chơi: Ghép Từ Chạy Tàu!</h2>
-          <p>Kéo các chữ tiếng Trung ở dưới thả vào <strong>toa tàu</strong> có nghĩa tiếng Việt tương ứng để giúp tàu chạy về ga nhé!</p>
-        </div>
-
-        <!-- Train Container -->
-        <div class="train-game-area">
-          <div class="railway-track-wrapper">
-            <div class="railway-track">
-              <!-- Train graphic -->
-              <div class="train-wrapper" id="train-sprite">
-                <!-- Locomotive (Đầu tàu) -->
-                <div class="locomotive">
-                  <div class="steam-chimney">
-                    <div class="steam-cloud cloud-1">💨</div>
-                    <div class="steam-cloud cloud-2">💨</div>
-                  </div>
-                  <div class="cab">🎒</div>
-                  <div class="wheel wheel-front"></div>
-                  <div class="wheel wheel-back"></div>
-                </div>
-                <!-- Carriages (Các toa tàu - sẽ được thêm động) -->
-                <div class="carriages-container" id="carriages-container">
-                  <!-- Drop zones will go here -->
-                </div>
-              </div>
-            </div>
+        <!-- Lesson 68: Locked -->
+        <div class="lesson-card locked">
+          <div class="lesson-card-banner">
+            <span class="lesson-num">Bài 68</span>
+            <div class="lock-overlay">🔒</div>
           </div>
-
-          <!-- Words Dock (Nguồn kéo) -->
-          <div class="words-dock-container">
-            <h3>Kéo từ ở đây:</h3>
-            <div class="words-dock" id="words-dock">
-              <!-- Draggable word cards -->
+          <div class="lesson-card-body">
+            <h3 class="lesson-title-cn">魔法笔</h3>
+            <p class="lesson-title-py">Mófǎbǐ</p>
+            <h4 class="lesson-title-vi">Chiếc Bút Phép Thuật</h4>
+            
+            <div class="lesson-status-bar">
+              <span class="status-badge locked">Chưa mở khóa</span>
             </div>
-          </div>
-
-          <!-- Game Action Buttons -->
-          <div class="game-actions">
-            <button id="btn-reset-match" class="game-btn secondary-btn">Chơi Lại 🔄</button>
+            <button class="play-lesson-btn disabled" disabled>Khóa 🔒</button>
           </div>
         </div>
-      </section>
 
-      <!-- Section: Quiz Game -->
-      <section id="section-game-quiz" class="tab-content">
-        <div class="game-instructions">
-          <h2>🎯 Trắc Nghiệm: Giúp Nhân Vật Lên Đường!</h2>
-          <p>Đọc câu và chọn từ tiếng Trung thích hợp nhất để điền vào chỗ trống nhé!</p>
-        </div>
-
-        <div class="quiz-container">
-          <!-- Score Board -->
-          <div class="quiz-header">
-            <div class="quiz-progress">
-              Câu hỏi: <span id="quiz-current-q">1</span>/<span id="quiz-total-q">5</span>
-            </div>
-            <div class="quiz-score">
-              Điểm: <span id="quiz-score-val">0</span>
-            </div>
+        <!-- Lesson 69: Locked -->
+        <div class="lesson-card locked">
+          <div class="lesson-card-banner">
+            <span class="lesson-num">Bài 69</span>
+            <div class="lock-overlay">🔒</div>
           </div>
-
-          <!-- Question Card -->
-          <div class="quiz-card" id="quiz-card">
-            <div class="avatar-bubble">
-              <div class="mascot-avatar">✏️</div>
-              <div class="speech-bubble">
-                <p class="vietnamese-hint" id="quiz-hint">Đang tải...</p>
-                <div class="sentence-display" id="quiz-sentence">
-                  <!-- e.g., 我不敢 [ ? ] 你们竟然去了中国！ -->
-                </div>
-                <p class="sentence-pinyin" id="quiz-pinyin"></p>
-              </div>
+          <div class="lesson-card-body">
+            <h3 class="lesson-title-cn">去中国</h3>
+            <p class="lesson-title-py">Qù Zhōngguó</p>
+            <h4 class="lesson-title-vi">Đi Trung Quốc</h4>
+            
+            <div class="lesson-status-bar">
+              <span class="status-badge locked">Chưa mở khóa</span>
             </div>
-
-            <!-- Multiple Choice Options -->
-            <div class="quiz-options" id="quiz-options">
-              <!-- Options buttons injected by JS -->
-            </div>
-
-            <div class="quiz-feedback" id="quiz-feedback">
-              <!-- Correct/incorrect status message -->
-            </div>
-          </div>
-
-          <div class="game-actions">
-            <button id="btn-next-quiz" class="game-btn primary-btn hidden">Câu Tiếp Theo ➡️</button>
-            <button id="btn-reset-quiz" class="game-btn secondary-btn">Chơi Lại từ đầu 🔄</button>
+            <button class="play-lesson-btn disabled" disabled>Khóa 🔒</button>
           </div>
         </div>
-      </section>
+
+      </div>
+
+      <!-- Encouragement Mascot Card -->
+      <div class="mascot-encouragement">
+        <div class="mascot-avatar">✏️</div>
+        <div class="mascot-bubble">
+          <p><strong>Bút Thần Kỳ nhắn nhủ:</strong> "Hana đang làm rất tốt! Hãy học bài 67 thật chăm chỉ để đạt điểm tối đa và gửi kết quả về Google Chat khoe mẹ nhé! Cố lên con yêu!"</p>
+        </div>
+      </div>
 
     </main>
 
-    <!-- Modal for game completion/success -->
-    <div class="modal-overlay" id="success-modal">
-      <div class="modal-card">
-        <div class="modal-badge">🏆</div>
-        <h2 id="modal-title">Xuất sắc quá bé ơi!</h2>
-        <p id="modal-message">Bé đã hoàn thành xuất sắc thử thách rồi.</p>
-        <div class="modal-stats" id="modal-stats">
-          <!-- Custom stats -->
-        </div>
-        <button id="btn-modal-action" class="game-btn primary-btn">Chơi Lại</button>
-      </div>
-    </div>
+    <!-- Footer -->
+    <footer class="dashboard-footer">
+      <p>© 2026 Hana Learning Chinese. Designed with love ❤️</p>
+    </footer>
 
-    <!-- Background Decoration -->
+    <!-- Background Decorations -->
     <div class="bg-decorations">
       <div class="cloud cloud-slow">☁️</div>
       <div class="cloud cloud-fast">☁️</div>
