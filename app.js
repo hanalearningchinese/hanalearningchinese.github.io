@@ -10,35 +10,84 @@ document.addEventListener('DOMContentLoaded', () => {
 function updateDashboardStats() {
   // 1. Read completion status and scores from localStorage
   const lessons = {
+    60: {
+      completed: localStorage.getItem('lesson_60_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_60_score') || '0'),
+      url: 'lessons/lesson_60.html',
+      yt: 'https://www.youtube.com/watch?v=SRm4upkD85M',
+      unlocked: true // First lesson is always unlocked by default
+    },
+    61: {
+      completed: localStorage.getItem('lesson_61_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_61_score') || '0'),
+      url: 'lessons/lesson_61.html',
+      yt: 'https://www.youtube.com/watch?v=kzTXHuBITos',
+      unlocked: false
+    },
+    62: {
+      completed: localStorage.getItem('lesson_62_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_62_score') || '0'),
+      url: 'lessons/lesson_62.html',
+      yt: 'https://www.youtube.com/watch?v=ewb-pxeyDw0',
+      unlocked: false
+    },
+    63: {
+      completed: localStorage.getItem('lesson_63_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_63_score') || '0'),
+      url: 'lessons/lesson_63.html',
+      yt: 'https://www.youtube.com/watch?v=mnTCrCUC134',
+      unlocked: false
+    },
+    64: {
+      completed: localStorage.getItem('lesson_64_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_64_score') || '0'),
+      url: 'lessons/lesson_64.html',
+      yt: 'https://www.youtube.com/watch?v=0O_17rBZAtw',
+      unlocked: false
+    },
+    65: {
+      completed: localStorage.getItem('lesson_65_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_65_score') || '0'),
+      url: 'lessons/lesson_65.html',
+      yt: 'https://www.youtube.com/watch?v=Fw7iZQrZenw',
+      unlocked: false
+    },
+    66: {
+      completed: localStorage.getItem('lesson_66_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_66_score') || '0'),
+      url: 'lessons/lesson_66.html',
+      yt: 'https://www.youtube.com/watch?v=J0X8oaom7js',
+      unlocked: false
+    },
     67: {
       completed: localStorage.getItem('lesson_67_completed') === 'true',
       score: parseInt(localStorage.getItem('lesson_67_score') || '0'),
       url: 'lessons/lesson_67.html',
       yt: 'https://www.youtube.com/watch?v=aFV_dJVB7MY',
-      unlocked: true // First lesson is always unlocked
+      unlocked: false
     },
     68: {
       completed: localStorage.getItem('lesson_68_completed') === 'true',
       score: parseInt(localStorage.getItem('lesson_68_score') || '0'),
       url: 'lessons/lesson_68.html',
       yt: 'https://www.youtube.com/watch?v=6t6XPw9J9-Y',
-      unlocked: false // Unlocked if 67 is completed
+      unlocked: false
     },
     69: {
       completed: localStorage.getItem('lesson_69_completed') === 'true',
       score: parseInt(localStorage.getItem('lesson_69_score') || '0'),
       url: 'lessons/lesson_69.html',
       yt: 'https://www.youtube.com/watch?v=9xZvrLqiqTo',
-      unlocked: false // Unlocked if 68 is completed
+      unlocked: false
     }
   };
 
   // Determine unlock status dynamically
-  if (lessons[67].completed) {
-    lessons[68].unlocked = true;
-  }
-  if (lessons[68].completed) {
-    lessons[69].unlocked = true;
+  const seq = [60, 61, 62, 63, 64, 65, 66, 67, 68, 69];
+  for (let i = 0; i < seq.length - 1; i++) {
+    if (lessons[seq[i]].completed) {
+      lessons[seq[i+1]].unlocked = true;
+    }
   }
 
   let totalPoints = 0;
@@ -108,15 +157,15 @@ function updateDashboardStats() {
 
   // 3. Update Header Stats
   document.getElementById('total-points').textContent = totalPoints;
-  document.getElementById('completed-count').textContent = `${completedCount}/3`;
+  document.getElementById('completed-count').textContent = `${completedCount}/10`;
 
   // 4. Calculate Badge Name (Rank)
   const badgeNameEl = document.getElementById('badge-name');
-  if (totalPoints >= 130) {
+  if (totalPoints >= 450) {
     badgeNameEl.textContent = "Trạng Nguyên Nhí 👑";
-  } else if (totalPoints >= 80) {
+  } else if (totalPoints >= 300) {
     badgeNameEl.textContent = "Học Giả Siêu Cấp 🌟";
-  } else if (totalPoints >= 30) {
+  } else if (totalPoints >= 150) {
     badgeNameEl.textContent = "Học Giả Chăm Chỉ 🌱";
   } else if (totalPoints > 0) {
     badgeNameEl.textContent = "Tân Binh Học Tập 🎒";
