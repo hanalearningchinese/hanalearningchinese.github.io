@@ -1,102 +1,102 @@
 // ==========================================================================
-// APP LOGIC: LESSON 68 (客人 - The Guest)
+// APP LOGIC: LESSON 68 (客人 - Người Khách) - RPG Edition
 // Includes Vocabulary data, Web Audio, TTS, Games, PDF generation & Telegram
 // ==========================================================================
 
 const vocabularyList = [
   {
-    word: "客人",
-    pinyin: "kèrén",
-    meaning_vi: "Khách nhân, khách khứa",
-    meaning_en: "guest",
-    sentence: "今天家里有客人来。",
-    sentence_pinyin: "Jīntiān jiāli yǒu kèrén lái.",
-    sentence_vi: "Hôm nay ở nhà có khách đến chơi."
+    "word": "客人",
+    "pinyin": "kèrén",
+    "meaning_vi": "Người khách, khách khứa",
+    "meaning_en": "guest, visitor",
+    "sentence": "家里来了一位特别的客人。",
+    "sentence_pinyin": "Jiāli lái le yíwèi tèbié de kèrén.",
+    "sentence_vi": "Nhà có một vị khách đặc biệt ghé chơi."
   },
   {
-    word: "欢迎",
-    pinyin: "huānyíng",
-    meaning_vi: "Chào mừng, hoan nghênh",
-    meaning_en: "welcome",
-    sentence: "欢迎你来到我们家！",
-    sentence_pinyin: "Huānyíng nǐ láidào wǒmen jiā!",
-    sentence_vi: "Chào mừng bạn đến với nhà của chúng tớ!"
+    "word": "欢迎",
+    "pinyin": "huānyíng",
+    "meaning_vi": "Chào mừng, đón tiếp",
+    "meaning_en": "welcome",
+    "sentence": "热烈欢迎客人的到来！",
+    "sentence_pinyin": "Rèliè huānyíng kèrén de dàolái!",
+    "sentence_vi": "Nhiệt liệt chào mừng vị khách ghé thăm!"
   },
   {
-    word: "敲门",
-    pinyin: "qiāomén",
-    meaning_vi: "Gõ cửa",
-    meaning_en: "knock on the door",
-    sentence: "有人在敲门。",
-    sentence_pinyin: "Yǒu rén zài qiāomén.",
-    sentence_vi: "Có ai đó đang gõ cửa kìa."
+    "word": "茶",
+    "pinyin": "chá",
+    "meaning_vi": "Trà, chè",
+    "meaning_en": "tea",
+    "sentence": "请给客人倒一杯茶。",
+    "sentence_pinyin": "Qǐng gěi kèrén dào yìbēi chá.",
+    "sentence_vi": "Xin hãy rót cho khách một ly trà."
   },
   {
-    word: "谁",
-    pinyin: "shéi",
-    meaning_vi: "Ai",
-    meaning_en: "who",
-    sentence: "请问门外是谁？",
-    sentence_pinyin: "Qǐngwèn mén wài shì shéi?",
-    sentence_vi: "Xin hỏi ngoài cửa là ai thế ạ?"
+    "word": "礼貌",
+    "pinyin": "lǐmào",
+    "meaning_vi": "Lịch sự, lễ phép",
+    "meaning_en": "polite, courtesy",
+    "sentence": "对待客人要讲礼貌。",
+    "sentence_pinyin": "Duìdài kèrén yào jiǎng lǐmào.",
+    "sentence_vi": "Đối xử với khách phải thật lịch sự lễ phép."
   },
   {
-    word: "朋友",
-    pinyin: "péngyou",
-    meaning_vi: "Bạn bè, bằng hữu",
-    meaning_en: "friend",
-    sentence: "这是我的好朋友杰克。",
-    sentence_pinyin: "Zhè shì wǒ de hǎo péngyou Jiékè.",
-    sentence_vi: "Đây là Jack, bạn tốt của tớ."
+    "word": "准备",
+    "pinyin": "zhǔnbèi",
+    "meaning_vi": "Chuẩn bị",
+    "meaning_en": "prepare",
+    "sentence": "妈妈准备了丰盛的晚餐。",
+    "sentence_pinyin": "Māma zhǔnbèi le fēngshèng de wǎncān.",
+    "sentence_vi": "Mẹ đã chuẩn bị một bữa tối thịnh soạn."
   },
   {
-    word: "进来",
-    pinyin: "jìnlái",
-    meaning_vi: "Đi vào, mời vào",
-    meaning_en: "come in",
-    sentence: "外面冷，快请进来吧！",
-    sentence_pinyin: "Wàimiàn lěng, kuài qǐng jìnlái ba!",
-    sentence_vi: "Bên ngoài lạnh lắm, mau mời vào đi!"
+    "word": "丰盛",
+    "pinyin": "fēngshèng",
+    "meaning_vi": "Thịnh soạn, dồi dào",
+    "meaning_en": "sumptuous, rich",
+    "sentence": "桌子上摆满了丰盛的食物。",
+    "sentence_pinyin": "Zhuōzi shang bǎimǎn le fēngshèng de shíwù.",
+    "sentence_vi": "Trên bàn bày biện đầy đồ ăn thịnh soạn."
   },
   {
-    word: "请坐",
-    pinyin: "qǐng zuò",
-    meaning_vi: "Mời ngồi",
-    meaning_en: "please sit",
-    sentence: "大家都请坐吧！",
-    sentence_pinyin: "Dàjiā dōu qǐng zuò ba!",
-    sentence_vi: "Mọi người đều mời ngồi ạ!"
+    "word": "聊天",
+    "pinyin": "liáotiān",
+    "meaning_vi": "Nói chuyện phiếm, tán gẫu",
+    "meaning_en": "chat",
+    "sentence": "爸爸正在和客人聊天。",
+    "sentence_pinyin": "Bàba zhèngzài hé kèrén liáotiān.",
+    "sentence_vi": "Bố đang ngồi trò chuyện tán gẫu với khách."
   },
   {
-    word: "茶",
-    pinyin: "chá",
-    meaning_vi: "Trà, chè",
-    meaning_en: "tea",
-    sentence: "我给客人倒一杯茶。",
-    sentence_pinyin: "Wǒ gěi kèrén dào yì bēi chá.",
-    sentence_vi: "Tớ rót cho khách một ly trà."
+    "word": "送",
+    "pinyin": "sòng",
+    "meaning_vi": "Tặng, tiễn khách",
+    "meaning_en": "send, give, see off",
+    "sentence": "我们要去门口送客人。",
+    "sentence_pinyin": "Wǒmen yào qù ménkǒu sòng kèrén.",
+    "sentence_vi": "Chúng ta phải ra cửa tiễn khách."
   },
   {
-    word: "点心",
-    pinyin: "diǎnxin",
-    meaning_vi: "Điểm tâm, bánh ngọt",
-    meaning_en: "snack, pastry",
-    sentence: "桌子上有好吃的点心。",
-    sentence_pinyin: "Zhuōzi shang yǒu hǎochī de diǎnxin.",
-    sentence_vi: "Trên bàn có điểm tâm ngon lắm đó."
+    "word": "热情",
+    "pinyin": "rèqíng",
+    "meaning_vi": "Nhiệt tình, hiếu khách",
+    "meaning_en": "warm, enthusiastic",
+    "sentence": "主人对待大家非常热情。",
+    "sentence_pinyin": "Zhǔrén duìdài dàjiā fēicháng rèqíng.",
+    "sentence_vi": "Gia chủ đối đãi với mọi người cực kỳ nhiệt tình."
   },
   {
-    word: "客气",
-    pinyin: "kèqi",
-    meaning_vi: "Khách sáo, lịch sự",
-    meaning_en: "polite",
-    sentence: "别客气, 像在自己家一样。",
-    sentence_pinyin: "Bié kèqi, xiàng zài zìjǐ jiā yíyàng.",
-    sentence_vi: "Đừng khách sáo nhé, cứ tự nhiên như ở nhà mình."
+    "word": "感谢",
+    "pinyin": "gǎnxiè",
+    "meaning_vi": "Cảm ơn, cảm tạ",
+    "meaning_en": "thank, grateful",
+    "sentence": "客人非常感谢主人的热情款待。",
+    "sentence_pinyin": "Kèrén fēicháng gǎnxiè zhǔrén de rèqíng kuǎndài.",
+    "sentence_vi": "Khách vô cùng cảm ơn sự hiếu khách nhiệt tình của chủ nhà."
   }
 ];
 
-// Audio variables
+// AUDIO SYNTHESIZER
 let audioEnabled = true;
 let audioCtx = null;
 
@@ -185,7 +185,7 @@ const soundEffects = {
   }
 };
 
-// TTS System
+// TTS SYSTEM
 let chineseVoice = null;
 function loadVoices() {
   const voices = window.speechSynthesis.getVoices();
@@ -221,7 +221,9 @@ const state = {
   gameQuiz: {
     questions: [],
     currentQuestionIndex: 0,
-    score: 0
+    score: 0,
+    bossHP: 100,
+    playerLives: 3
   }
 };
 
@@ -256,79 +258,84 @@ function setupTabs() {
 
 function setupAudioToggle() {
   const btn = document.getElementById('btn-sound-toggle');
-  const btnText = btn.querySelector('.btn-text');
-  const iconPath = document.getElementById('sound-icon-path');
+  if (!btn) return;
   btn.addEventListener('click', () => {
     audioEnabled = !audioEnabled;
-    soundEffects.click();
+    const textSpan = btn.querySelector('.btn-text');
+    const path = document.getElementById('sound-icon-path');
     if (audioEnabled) {
-      btnText.textContent = "Âm thanh: Bật";
-      iconPath.setAttribute('d', 'M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z');
+      if (textSpan) textSpan.textContent = "Âm thanh: Bật";
+      if (path) path.setAttribute('d', 'M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z');
+      soundEffects.click();
     } else {
-      btnText.textContent = "Âm thanh: Tắt";
-      iconPath.setAttribute('d', 'M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.21.05-.42.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z');
+      if (textSpan) textSpan.textContent = "Âm thanh: Tắt";
+      if (path) path.setAttribute('d', 'M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.21.05-.42.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z');
     }
   });
 }
 
 // SLIDE DECK SYSTEM
 function setupSlideDeck() {
-  const btnPrev = document.getElementById('btn-prev-slide');
-  const btnNext = document.getElementById('btn-next-slide');
-  document.getElementById('total-slides-num').textContent = vocabularyList.length;
-  document.getElementById('vocab-count').textContent = vocabularyList.length;
-  
-  btnPrev.addEventListener('click', () => {
-    if (state.currentSlide > 0) {
-      state.currentSlide--;
-      soundEffects.click();
-      renderSlide();
-    }
-  });
-  btnNext.addEventListener('click', () => {
-    if (state.currentSlide < vocabularyList.length - 1) {
-      state.currentSlide++;
-      soundEffects.click();
-      renderSlide();
-    }
-  });
-  
-  const sidebar = document.getElementById('vocab-quick-list');
-  sidebar.innerHTML = '';
-  vocabularyList.forEach((item, index) => {
-    const div = document.createElement('div');
-    div.className = `vocab-item ${index === 0 ? 'active' : ''}`;
-    div.dataset.index = index;
-    div.innerHTML = `
-      <span class="vocab-item-cn">${item.word}</span>
-      <span class="vocab-item-vi">${item.meaning_vi}</span>
-    `;
-    div.addEventListener('click', () => {
-      soundEffects.click();
-      state.currentSlide = index;
-      renderSlide();
-    });
-    sidebar.appendChild(div);
-  });
   renderSlide();
+  document.getElementById('btn-prev-slide').addEventListener('click', () => {
+    if (state.currentSlide > 0) {
+      soundEffects.click();
+      state.currentSlide--;
+      renderSlide();
+    }
+  });
+  document.getElementById('btn-next-slide').addEventListener('click', () => {
+    if (state.currentSlide < vocabularyList.length - 1) {
+      soundEffects.click();
+      state.currentSlide++;
+      renderSlide();
+    }
+  });
+  
+  const quickList = document.getElementById('vocab-quick-list');
+  if (quickList) {
+    quickList.innerHTML = '';
+    vocabularyList.forEach((item, idx) => {
+      const el = document.createElement('div');
+      el.className = 'vocab-item-link';
+      el.innerHTML = `<span class="vocab-link-cn">${item.word}</span> <span class="vocab-link-vi">${item.meaning_vi}</span>`;
+      el.addEventListener('click', () => {
+        soundEffects.click();
+        state.currentSlide = idx;
+        renderSlide();
+        document.getElementById('section-lesson').scrollIntoView({ behavior: 'smooth' });
+      });
+      quickList.appendChild(el);
+    });
+  }
+  const countEl = document.getElementById('vocab-count');
+  if (countEl) countEl.textContent = vocabularyList.length;
+  const totalSlidesEl = document.getElementById('total-slides-num');
+  if (totalSlidesEl) totalSlidesEl.textContent = vocabularyList.length;
 }
 
 function renderSlide() {
-  const data = vocabularyList[state.currentSlide];
   const card = document.getElementById('slide-card');
+  if (!card) return;
+  
+  const data = vocabularyList[state.currentSlide];
   document.getElementById('current-slide-num').textContent = state.currentSlide + 1;
   
-  document.querySelectorAll('.vocab-item').forEach(item => {
-    item.classList.remove('active');
-    if (parseInt(item.dataset.index) === state.currentSlide) {
-      item.classList.add('active');
-      item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-  });
-  
+  // Highlight targeted characters
   let highlightedSentence = data.sentence;
   if (data.sentence.includes(data.word)) {
-    highlightedSentence = data.sentence.replace(new RegExp(data.word, 'g'), `<span class="highlight">${data.word}</span>`);
+    highlightedSentence = data.sentence.replace(data.word, `<span class="highlight">${data.word}</span>`);
+  } else {
+    // Edge cases
+    if (data.word === "要...了" && data.sentence.includes("要") && data.sentence.includes("了")) {
+      highlightedSentence = data.sentence.replace("要", `<span class="highlight">要</span>`).replace("了", `<span class="highlight">了</span>`);
+    } else {
+      ["得", "该", "交", "支"].forEach(char => {
+        if (data.word === char && data.sentence.includes(char)) {
+          highlightedSentence = data.sentence.replace(char, `<span class="highlight">${char}</span>`);
+        }
+      });
+    }
   }
   
   card.innerHTML = `
@@ -375,193 +382,104 @@ function setupTrainGame() {
 }
 
 function startTrainGame() {
-  state.gameMatch.matchedCount = 0;
-  state.gameMatch.selectedWords = [];
-
-  // Pick 5 random words for the train carriages
-  const shuffled = [...vocabularyList].sort(() => 0.5 - Math.random());
-  const selected = shuffled.slice(0, 5);
-  state.gameMatch.selectedWords = selected;
-
-  // Build the carriages
   const carriagesContainer = document.getElementById('carriages-container');
-  carriagesContainer.innerHTML = '';
+  const wordsDock = document.getElementById('words-dock');
+  const trainSprite = document.getElementById('train-sprite');
+  trainSprite.style.transform = 'translateX(0)';
   
-  selected.forEach((item, index) => {
+  const shuffled = [...vocabularyList].sort(() => 0.5 - Math.random());
+  state.gameMatch.selectedWords = shuffled.slice(0, 4);
+  state.gameMatch.matchedCount = 0;
+  
+  carriagesContainer.innerHTML = '';
+  state.gameMatch.selectedWords.forEach(item => {
     const carriage = document.createElement('div');
-    carriage.className = 'train-carriage';
-    carriage.dataset.id = item.word;
+    carriage.className = 'carriage';
     carriage.innerHTML = `
-      <div class="carriage-window">🖼️</div>
-      <div class="carriage-label-vi">${item.meaning_vi}</div>
-      <div class="carriage-dropzone" data-word="${item.word}">Thả chữ vào đây</div>
-      <div class="wheel wheel-left"></div>
-      <div class="wheel wheel-right"></div>
+      <div class="carriage-meaning" title="${item.meaning_vi}">${item.meaning_vi}</div>
+      <div class="carriage-drop-zone" data-word="${item.word}">Thả chữ vào đây</div>
+      <div class="wheel wheel-1"></div>
+      <div class="wheel wheel-2"></div>
+      <div class="carriage-hook"></div>
     `;
     carriagesContainer.appendChild(carriage);
   });
-
-  // Build the draggable words dock
-  const wordsDock = document.getElementById('words-dock');
-  wordsDock.innerHTML = '';
   
-  // Shuffle words for docking
-  const dockedWords = [...selected].sort(() => 0.5 - Math.random());
-  dockedWords.forEach(item => {
-    const wordCard = document.createElement('div');
-    wordCard.className = 'word-card';
-    wordCard.draggable = true;
-    wordCard.id = `drag-${item.word}`;
-    wordCard.dataset.word = item.word;
-    wordCard.innerHTML = `
-      <span class="cn-text">${item.word}</span>
-      <span class="py-text">${item.pinyin}</span>
-    `;
-    
-    // Drag handlers
-    wordCard.addEventListener('dragstart', (e) => {
+  const shuffledWords = [...state.gameMatch.selectedWords].sort(() => 0.5 - Math.random());
+  wordsDock.innerHTML = '';
+  shuffledWords.forEach(item => {
+    const card = document.createElement('div');
+    card.className = 'draggable-word';
+    card.textContent = item.word;
+    card.draggable = true;
+    card.addEventListener('dragstart', (e) => {
+      card.classList.add('dragging');
       e.dataTransfer.setData('text/plain', item.word);
-      wordCard.classList.add('dragging');
     });
-    
-    wordCard.addEventListener('dragend', () => {
-      wordCard.classList.remove('dragging');
+    card.addEventListener('dragend', () => {
+      card.classList.remove('dragging');
     });
-
-    // Support tap-to-select on mobile devices
-    wordCard.addEventListener('click', () => {
-      handleMobileSelect(wordCard);
-    });
-
-    wordsDock.appendChild(wordCard);
+    wordsDock.appendChild(card);
   });
-
-  // Setup drop zones
-  const dropzones = document.querySelectorAll('.carriage-dropzone');
-  dropzones.forEach(zone => {
+  
+  const dropZones = document.querySelectorAll('.carriage-drop-zone');
+  dropZones.forEach(zone => {
     zone.addEventListener('dragover', (e) => {
       e.preventDefault();
-      zone.classList.add('hover');
+      zone.classList.add('drag-over');
     });
-    
     zone.addEventListener('dragleave', () => {
-      zone.classList.remove('hover');
+      zone.classList.remove('drag-over');
     });
-    
     zone.addEventListener('drop', (e) => {
       e.preventDefault();
-      zone.classList.remove('hover');
-      const droppedWord = e.dataTransfer.getData('text/plain');
-      handleMatching(droppedWord, zone);
-    });
-
-    // Support mobile tap-to-drop
-    zone.addEventListener('click', () => {
-      const selectedActive = document.querySelector('.word-card.mobile-selected');
-      if (selectedActive) {
-        handleMatching(selectedActive.dataset.word, zone);
+      zone.classList.remove('drag-over');
+      const draggedWord = e.dataTransfer.getData('text/plain');
+      const targetWord = zone.dataset.word;
+      
+      if (draggedWord === targetWord) {
+        zone.classList.add('matched');
+        zone.textContent = draggedWord;
+        wordsDock.querySelectorAll('.draggable-word').forEach(card => {
+          if (card.textContent === draggedWord) card.remove();
+        });
+        speakChinese(draggedWord);
+        soundEffects.success();
+        state.gameMatch.matchedCount++;
+        if (state.gameMatch.matchedCount === 4) {
+          setTimeout(completeTrainGame, 600);
+        }
+      } else {
+        soundEffects.error();
+        zone.closest('.carriage').animate([
+          { transform: 'translateX(0)' }, { transform: 'translateX(-6px)' },
+          { transform: 'translateX(6px)' }, { transform: 'translateX(-6px)' },
+          { transform: 'translateX(6px)' }, { transform: 'translateX(0)' }
+        ], { duration: 300 });
       }
     });
   });
 }
 
-function handleMobileSelect(card) {
-  document.querySelectorAll('.word-card').forEach(c => c.classList.remove('mobile-selected'));
-  card.classList.add('mobile-selected');
-}
-
-function handleMatching(word, zone) {
-  const targetWord = zone.dataset.word;
-  if (word === targetWord) {
-    // Correct Match
-    soundEffects.click();
-    zone.innerHTML = `<span class="matched-success">${word} ✅</span>`;
-    zone.classList.add('matched');
-    
-    // Hide the word card from dock
-    const card = document.getElementById(`drag-${word}`);
-    if (card) card.style.visibility = 'hidden';
-    
-    state.gameMatch.matchedCount++;
-    
-    if (state.gameMatch.matchedCount === 5) {
-      soundEffects.trainWhistle();
-      animateTrainRelease();
-    }
-  } else {
-    // Wrong Match
-    soundEffects.error();
-    zone.classList.add('shake');
-    setTimeout(() => zone.classList.remove('shake'), 500);
-  }
-}
-
-function animateTrainRelease() {
-  const train = document.getElementById('train-sprite');
-  train.classList.add('train-leave-active');
-  
+function completeTrainGame() {
+  soundEffects.trainWhistle();
+  const trainSprite = document.getElementById('train-sprite');
+  trainSprite.style.transform = 'translateX(100vw)';
   setTimeout(() => {
     showModal({
-      title: "Tuyệt Vời Quá Hana ơi! 🚂💨",
-      message: "Bé đã ghép đúng các toa tàu và giúp đoàn tàu khởi hành thành công!",
-      stats: "Nhấn nút dưới để vào phần thử thách trắc nghiệm nhé.",
-      actionText: "Tiến Tới Trắc Nghiệm 🎯",
-      actionCallback: () => {
-        train.classList.remove('train-leave-active');
-        const tabQuiz = document.querySelector('[data-target="section-game-quiz"]');
-        if (tabQuiz) tabQuiz.click();
-      }
+      title: "Đoàn Tàu Xuất Phát! 🚂💨",
+      message: "Tuyệt vời! Hana đã xếp đúng tất cả toa tàu rồi.",
+      stats: "Hoàn thành xếp chữ: 4 / 4 từ đúng ✅",
+      actionText: "Chơi Lại Trò Này 🔄",
+      actionCallback: () => { startTrainGame(); }
     });
-  }, 1800);
+  }, 1200);
 }
 
-// GAME 2: QUIZ GAME
-const dbQuestions = [
-  {
-    sentence: "今天家里有 [ ? ] 来，我们要好好准备一下。",
-    sentence_pinyin: "Jīntiān jiāli yǒu [ ? ] lái, wǒmen yào hǎohāo zhǔnbèi yíxià.",
-    word: "客人",
-    meaning_vi: "Hôm nay ở nhà có khách đến chơi, chúng ta phải chuẩn bị cho tốt nhé.",
-    options: ["客人", "敲门", "朋友", "茶"]
-  },
-  {
-    sentence: "大家都在门外站着，快请 [ ? ] 吧！",
-    sentence_pinyin: "Dàjiā dōu zài mén wài zhànzhe, kuài qǐng [ ? ] ba!",
-    word: "进来",
-    meaning_vi: "Mọi người đều đang đứng ngoài cửa, mau mời vào đi!",
-    options: ["敲门", "进来", "请坐", "客气"]
-  },
-  {
-    sentence: "请问门外是 [ ? ] 在敲门啊？",
-    sentence_pinyin: "Qǐngwèn mén wài shì [ ? ] zài qiāomén a?",
-    word: "谁",
-    meaning_vi: "Xin hỏi ngoài cửa là ai đang gõ cửa thế ạ?",
-    options: ["茶", "谁", "客人", "朋友"]
-  },
-  {
-    sentence: "爸爸，这是我的好 [ ? ] 杰克。",
-    sentence_pinyin: "Bàba, zhè shì wǒ de hǎo [ ? ] Jiékè.",
-    word: "朋友",
-    meaning_vi: "Bố ơi, đây là Jack bạn tốt của con ạ.",
-    options: ["茶", "点心", "朋友", "客人"]
-  },
-  {
-    sentence: "大家快请 [ ? ] ，我给你们倒茶。",
-    sentence_pinyin: "Dàjiā kuài qǐng [ ? ] , wǒ gěi nǐmen dào chá.",
-    word: "请坐",
-    meaning_vi: "Mọi người mau mời ngồi, cháu rót trà cho mọi người ạ.",
-    options: ["请坐", "进来", "敲门", "欢迎"]
-  }
-];
-
+// GAME 2: RPG BOSS BATTLE
 function setupQuizGame() {
-  const btnReset = document.getElementById('btn-reset-quiz');
-  btnReset.addEventListener('click', () => {
-    soundEffects.click();
-    startQuizGame();
-  });
-  
   const btnNext = document.getElementById('btn-next-quiz');
+  const btnReset = document.getElementById('btn-reset-quiz');
   btnNext.addEventListener('click', () => {
     soundEffects.click();
     state.gameQuiz.currentQuestionIndex++;
@@ -571,58 +489,128 @@ function setupQuizGame() {
       completeQuizGame();
     }
   });
+  btnReset.addEventListener('click', () => {
+    soundEffects.click();
+    startQuizGame();
+  });
 }
 
 function startQuizGame() {
   state.gameQuiz.score = 0;
   state.gameQuiz.currentQuestionIndex = 0;
-  state.gameQuiz.questions = [...dbQuestions].sort(() => 0.5 - Math.random());
+  state.gameQuiz.bossHP = 100;
+  state.gameQuiz.playerLives = 3;
   
-  document.getElementById('quiz-score-val').textContent = "0";
-  document.getElementById('btn-next-quiz').classList.add('hidden');
+  // Reset Boss UI
+  document.getElementById('boss-hp-fill').style.width = '100%';
+  document.getElementById('heart-1').classList.remove('lost');
+  document.getElementById('heart-2').classList.remove('lost');
+  document.getElementById('heart-3').classList.remove('lost');
   
+  const shuffled = [...vocabularyList].sort(() => 0.5 - Math.random());
+  state.gameQuiz.questions = shuffled.slice(0, 5);
+  document.getElementById('quiz-total-q').textContent = state.gameQuiz.questions.length;
   renderQuizQuestion();
 }
 
 function renderQuizQuestion() {
   const data = state.gameQuiz.questions[state.gameQuiz.currentQuestionIndex];
+  document.getElementById('btn-next-quiz').classList.add('hidden');
+  const feedback = document.getElementById('quiz-feedback');
+  feedback.className = 'quiz-feedback';
+  feedback.textContent = '';
   document.getElementById('quiz-current-q').textContent = state.gameQuiz.currentQuestionIndex + 1;
-  document.getElementById('quiz-total-q').textContent = state.gameQuiz.questions.length;
   
-  document.getElementById('quiz-hint').textContent = `Dịch nghĩa: ${data.meaning_vi}`;
+  let displaySentence = data.sentence;
+  if (data.sentence.includes(data.word)) {
+    displaySentence = data.sentence.replace(data.word, `<span class="blank-spot" id="blank-spot">？</span>`);
+  } else {
+    if (data.word === "要...了" && data.sentence.includes("要") && data.sentence.includes("了")) {
+      displaySentence = data.sentence.replace("要", `<span class="blank-spot" id="blank-spot">要</span>`).replace("l", `<span class="blank-spot">了</span>`);
+    } else {
+      ["得", "该", "交", "支"].forEach(char => {
+        if (data.word === char && data.sentence.includes(char)) {
+          displaySentence = data.sentence.replace(char, `<span class="blank-spot" id="blank-spot">？</span>`);
+        }
+      });
+    }
+  }
+  
+  document.getElementById('quiz-hint').textContent = `Nghĩa câu: "${data.sentence_vi}"`;
+  document.getElementById('quiz-sentence').innerHTML = displaySentence;
   document.getElementById('quiz-pinyin').textContent = data.sentence_pinyin;
   
-  const formattedSentence = data.sentence.replace("[ ? ]", `<span class="blank-spot" id="blank-spot">❓</span>`);
-  document.getElementById('quiz-sentence').innerHTML = formattedSentence;
+  const distractors = vocabularyList
+    .filter(item => item.word !== data.word)
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 2);
+  const options = [data, ...distractors].sort(() => 0.5 - Math.random());
   
   const optionsContainer = document.getElementById('quiz-options');
   optionsContainer.innerHTML = '';
-  document.getElementById('quiz-feedback').className = 'quiz-feedback';
-  document.getElementById('quiz-feedback').textContent = '';
-  document.getElementById('btn-next-quiz').classList.add('hidden');
-
-  data.options.forEach(opt => {
+  options.forEach(opt => {
     const btn = document.createElement('button');
-    btn.className = 'option-btn';
-    btn.textContent = opt;
+    btn.className = 'quiz-option-btn';
+    btn.innerHTML = `<span class="opt-chinese">${opt.word}</span><span class="opt-pinyin">${opt.pinyin}</span>`;
     btn.addEventListener('click', () => {
-      handleAnswer(opt, btn);
+      handleQuizAnswer(opt.word === data.word, btn, data);
     });
     optionsContainer.appendChild(btn);
   });
 }
 
-function handleAnswer(selectedOpt, clickedBtn) {
-  const data = state.gameQuiz.questions[state.gameQuiz.currentQuestionIndex];
-  const isCorrect = (selectedOpt === data.word);
+function triggerSpellEffect(fromEl, toEl, emoji, callback) {
+  const container = document.getElementById('app-rpg-container');
+  const fromRect = fromEl.getBoundingClientRect();
+  const toRect = toEl.getBoundingClientRect();
+  const containerRect = container.getBoundingClientRect();
+
+  const spell = document.createElement('div');
+  spell.className = 'boss-spell';
+  spell.textContent = emoji;
+  spell.style.left = `${fromRect.left - containerRect.left + fromRect.width/2}px`;
+  spell.style.top = `${fromRect.top - containerRect.top + fromRect.height/2}px`;
+  container.appendChild(spell);
+
+  setTimeout(() => {
+    spell.style.left = `${toRect.left - containerRect.left + toRect.width/2}px`;
+    spell.style.top = `${toRect.top - containerRect.top + toRect.height/2}px`;
+    spell.style.transform = 'scale(1.8) rotate(360deg)';
+  }, 50);
+
+  setTimeout(() => {
+    spell.remove();
+    if (callback) callback();
+  }, 500);
+}
+
+function handleQuizAnswer(isCorrect, clickedBtn, data) {
   const feedback = document.getElementById('quiz-feedback');
-  const btns = document.querySelectorAll('.option-btn');
+  const btns = document.querySelectorAll('.quiz-option-btn');
+  const heroEl = document.getElementById('rpg-hero');
+  const bossEl = document.getElementById('rpg-boss');
+  const arenaEl = document.querySelector('.boss-battle-container');
 
   if (isCorrect) {
     soundEffects.success();
     clickedBtn.classList.add('correct');
     feedback.className = 'quiz-feedback success';
-    feedback.textContent = '🎉 Chính xác! Giỏi lắm Hana ơi!';
+    feedback.textContent = '🎉 Chính xác! Bạn LuLu tung chưởng tấn công Boss!';
+    
+    // Spell attack animation
+    triggerSpellEffect(heroEl, bossEl, "✨", () => {
+      // Shakes the Boss on hits
+      bossEl.animate([
+        { transform: 'scale(1)' },
+        { transform: 'scale(1.3) rotate(15deg)', filter: 'hue-rotate(90deg)' },
+        { transform: 'scale(1)' }
+      ], { duration: 300 });
+      
+      // Decrease HP
+      state.gameQuiz.bossHP -= 20;
+      document.getElementById('boss-hp-fill').style.width = `${state.gameQuiz.bossHP}%`;
+    });
+
     const blank = document.getElementById('blank-spot');
     if (blank) {
       blank.textContent = data.word;
@@ -631,15 +619,40 @@ function handleAnswer(selectedOpt, clickedBtn) {
     speakChinese(data.sentence);
     btns.forEach(btn => btn.classList.add('disabled'));
     state.gameQuiz.score += 10;
-    document.getElementById('quiz-score-val').textContent = state.gameQuiz.score;
     document.getElementById('btn-next-quiz').classList.remove('hidden');
   } else {
     soundEffects.error();
     clickedBtn.classList.add('wrong');
     clickedBtn.classList.add('disabled');
     feedback.className = 'quiz-feedback error';
-    feedback.textContent = '❌ Chưa đúng rồi, bé chọn lại nhé!';
+    feedback.textContent = '😢 Ôi không! Boss đã phản công LuLu rồi!';
+
+    // Boss counter attack animation
+    triggerSpellEffect(bossEl, heroEl, "☄️", () => {
+      // Shake screen
+      arenaEl.classList.add('shake-element');
+      setTimeout(() => { arenaEl.classList.remove('shake-element'); }, 400);
+
+      // Deduct live
+      state.gameQuiz.playerLives--;
+      const targetHeart = document.getElementById(`heart-${state.gameQuiz.playerLives + 1}`);
+      if (targetHeart) targetHeart.classList.add('lost');
+
+      if (state.gameQuiz.playerLives <= 0) {
+        setTimeout(failBossBattle, 500);
+      }
+    });
   }
+}
+
+function failBossBattle() {
+  showModal({
+    title: "Thất Bại Rồi! 😢💥",
+    message: "Hana và bạn LuLu đã hết sinh mệnh trước sức mạnh của Boss!",
+    stats: "Hãy nhấp hồi phục để chuẩn bị chiến đấu lại nhé!",
+    actionText: "Hồi Phục Sinh Mệnh 💖",
+    actionCallback: () => { startQuizGame(); }
+  });
 }
 
 function completeQuizGame() {
@@ -650,16 +663,16 @@ function completeQuizGame() {
   localStorage.setItem('lesson_68_completed', 'true');
   
   showModal({
-    title: "Chúc Mừng Hana! 🎉🏆",
-    message: "Bé đã vượt qua tất cả các câu hỏi trắc nghiệm thử thách!",
-    stats: `Điểm số trắc nghiệm: ${finalScore} / 50 điểm 🌟`,
-    actionText: "Chơi Lại Trắc Nghiệm 🔄",
+    title: "Đã Diệt Boss Thượng Hải! 🏆🐼",
+    message: "Chúc mừng Hana và LuLu đã thám hiểm thành phố thành công và nhận Huy hiệu!",
+    stats: `Boss bị diệt! HP: 0% | Điểm nhận được: ${finalScore} / 50 điểm ⭐`,
+    actionText: "Đấu Boss Lại ⚔️",
     actionCallback: () => { startQuizGame(); },
     showReporting: true
   });
 }
 
-// 8. PDF GENERATION & TELEGRAM / APPS SCRIPT REPORTING
+// 8. PDF GENERATION & GOOGLE CHAT REPORTING
 function setupReporting() {
   const btnPDF = document.getElementById('btn-pdf-download');
   const btnGChat = document.getElementById('btn-gchat-send');
@@ -689,12 +702,12 @@ function generatePDF(score) {
     doc.setFont("helvetica", "bold");
     doc.setFontSize(22);
     doc.setTextColor(139, 92, 246);
-    doc.text("PHIEU DIEM HOC TIENG TRUNG", 105, 35, { align: "center" });
+    doc.text("CHUNG NHAN THAM HIEM TIENG TRUNG", 105, 35, { align: "center" });
     
     // Sub-title
     doc.setFontSize(14);
     doc.setTextColor(14, 165, 233); // Blue
-    doc.text("Chuong Trinh: But Phep Thuat 68", 105, 45, { align: "center" });
+    doc.text("Chuyen Di Thám Hiem: But Phep Thuat 68", 105, 45, { align: "center" });
     
     // Separator line
     doc.setDrawColor(226, 232, 240);
@@ -705,19 +718,19 @@ function generatePDF(score) {
     doc.setFont("helvetica", "bold");
     doc.setFontSize(12);
     doc.setTextColor(30, 27, 75);
-    doc.text("Hoc vien:", 30, 70);
+    doc.text("Nha Thám Hiem:", 30, 70);
     doc.setFont("helvetica", "normal");
-    doc.text("Hana (9 tuoi)", 70, 70);
+    doc.text("Hana & Gau Truc LuLu", 70, 70);
     
     doc.setFont("helvetica", "bold");
-    doc.text("Bai hoc:", 30, 80);
+    doc.text("Dia danh dat den:", 30, 80);
     doc.setFont("helvetica", "normal");
-    doc.text("Bai 68 - Ke ren (Khach nhan / Nguoi khach)", 70, 80);
+    doc.text("Thanh Pho: Phượng Hoàng Cổ Trấn (Bai 68 - Ke ren)", 70, 80);
     
     doc.setFont("helvetica", "bold");
-    doc.text("Ngay hoan thanh:", 30, 90);
+    doc.text("Huy hieu dat duoc:", 30, 90);
     doc.setFont("helvetica", "normal");
-    doc.text(new Date().toLocaleDateString('vi-VN'), 70, 90);
+    doc.text("Huy Hieu 🏮 Phượng Hoàng Cổ Trấn", 70, 90);
     
     // Score board card
     doc.setFillColor(248, 250, 252);
@@ -729,35 +742,40 @@ function generatePDF(score) {
     doc.setFont("helvetica", "bold");
     doc.setFontSize(16);
     doc.setTextColor(16, 185, 129); // Green
-    doc.text("KET QUA DAT DUOC", 105, 118, { align: "center" });
+    doc.text("CHI SO KHAM PHA THU THACH", 105, 118, { align: "center" });
     doc.setFontSize(20);
-    doc.text(`${score} / 50 DIEM`, 105, 134, { align: "center" });
+    doc.text(`${score} / 50 DIEM (TIET DIET BOSS 100%)`, 105, 134, { align: "center" });
     
     // Detail Checklist
     doc.setFont("helvetica", "bold");
     doc.setFontSize(12);
     doc.setTextColor(30, 27, 75);
-    doc.text("Noi dung hoc da hoan thanh:", 30, 165);
+    doc.text("Cac nhiem vu da hoan thanh:", 30, 165);
     
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(11);
-    doc.setTextColor(71, 85, 105);
-    doc.text("- Nhan dien mat chu & binh am cua 10 tu vung cua bai.", 35, 175);
-    doc.text("- Hoan thanh tro choi keo tha tu vung xep toa xe lua.", 35, 183);
-    doc.text("- Tra loi dung cac cau trac nghiem hoan thien cau trong bai hoc.", 35, 191);
+    doc.text("- Nhiem vu 1: Xem Phim Hoat Hinh Tieu Thuyết [Hoan Thanh]", 35, 177);
+    doc.text("- Nhiem vu 2: Tham Hiem Tu Vung Hinh Chuyen [Hoan Thanh]", 35, 187);
+    doc.text("- Nhiem vu 3: Ghep Tu Chay Tau Hoa [Hoan Thanh]", 35, 197);
+    doc.text("- Nhiem vu 4: Tieu Diet Boss Cuoi Tuan [Hoan Thanh]", 35, 207);
     
-    // Footer encouragement
-    doc.setFont("helvetica", "italic");
+    // Decorative Badge Frame
+    doc.setDrawColor(245, 158, 11);
+    doc.setFillColor(254, 243, 199);
+    doc.rect(70, 222, 70, 25, "FD");
+    doc.setFont("helvetica", "bold");
     doc.setFontSize(12);
-    doc.setTextColor(139, 92, 246);
-    doc.text("Chuc mung Hana da hoan thanh xuat sac bai hoc!", 105, 230, { align: "center" });
-    doc.text("Con hay co gang o nhung bai hoc tiep theo nhe! Let's Go!", 105, 238, { align: "center" });
+    doc.setTextColor(245, 158, 11);
+    doc.text("HUY HIEU: 🏮", 105, 238, { align: "center" });
     
-    // Download the PDF
-    doc.save(`Phieu_diem_Hana_Bai_68.pdf`);
+    // Footer notice
+    doc.setFont("helvetica", "italic");
+    doc.setFontSize(10);
+    doc.setTextColor(107, 114, 128);
+    doc.text("Ban LuLu va But Than Ky se dong hanh cung Hana o cac chang tiep theo!", 105, 265, { align: "center" });
+    
+    doc.save("Phieu_diem_Hana_Bai_68.pdf");
   } catch (err) {
-    console.error("Error generating PDF:", err);
-    alert("Có lỗi xảy ra khi tạo PDF, bạn vui lòng kiểm tra lại trình duyệt nhé.");
+    console.error("PDF generation failed:", err);
   }
 }
 
@@ -774,7 +792,7 @@ function sendReportToGChat(score) {
   
   const payload = {
     student: "Hana",
-    lesson: "Bài 68: 客人 (Khách Nhân / Người Khách)",
+    lesson: "Bai 68: Giao dien RPG - Quyết Đấu Boss Phượng Hoàng Cổ Trấn",
     score: score,
     date: new Date().toLocaleDateString('vi-VN')
   };
@@ -788,11 +806,11 @@ function sendReportToGChat(score) {
     body: JSON.stringify(payload)
   })
   .then(() => {
-    statusDiv.textContent = "Gửi báo cáo thành công! Check Google Chat/Telegram nhé mẹ ơi! 💖";
+    statusDiv.textContent = "Gửi báo cáo thành công! Check Google Chat nhé mẹ ơi! ❤️";
     statusDiv.className = "gchat-status success";
   })
   .catch(err => {
-    console.error("Report send error:", err);
+    console.error("GChat send error:", err);
     statusDiv.textContent = "Không thể kết nối được tới máy chủ gửi tin.";
     statusDiv.className = "gchat-status error";
   });
