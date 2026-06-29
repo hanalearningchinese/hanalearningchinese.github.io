@@ -18,10 +18,19 @@
     <!-- Dashboard Header -->
     <header class="dashboard-header">
       <div class="profile-card">
-        <div class="profile-avatar">👧</div>
+        <div class="profile-avatar" id="avatar-container" style="position: relative;">🐼
+          <span class="level-badge" id="avatar-level">Lv.1</span>
+        </div>
         <div class="profile-info">
-          <h2>Hana's Learning Hub</h2>
-          <p class="profile-subtitle">Chào mừng bé Hana đến với thế giới Tiếng Trung! 🌟</p>
+          <h2>Hành Trình Gấu Trúc LuLu 🐼</h2>
+          <p class="profile-subtitle">Cùng bé Hana phiêu lưu tìm Bút Thần Kỳ qua các thành phố Trung Quốc!</p>
+          <!-- Experience Bar -->
+          <div class="xp-bar-container">
+            <div class="xp-bar-label">Kinh nghiệm: <span id="xp-current">0</span>/<span id="xp-next">100</span> XP</div>
+            <div class="xp-bar-outer">
+              <div class="xp-bar-inner" id="xp-bar-fill" style="width: 0%;"></div>
+            </div>
+          </div>
         </div>
       </div>
       
@@ -35,17 +44,17 @@
           </div>
         </div>
         <div class="stat-box">
-          <span class="stat-icon">📚</span>
+          <span class="stat-icon">🗺️</span>
           <div class="stat-content">
-            <span class="stat-val" id="completed-count">0/1</span>
-            <span class="stat-label">Bài Đã Học</span>
+            <span class="stat-val" id="completed-count">0/10</span>
+            <span class="stat-label">Thành Phố Đi Qua</span>
           </div>
         </div>
         <div class="stat-box">
           <span class="stat-icon">🎖️</span>
           <div class="stat-content">
-            <span class="stat-val" id="badge-name">Học Giả Mới</span>
-            <span class="stat-label">Danh Hiệu</span>
+            <span class="stat-val" id="badge-name">Nhà Thám Hiểm Mới</span>
+            <span class="stat-label">Danh Hiệu RPG</span>
           </div>
         </div>
       </div>
@@ -55,8 +64,55 @@
     <main class="dashboard-main">
       
       <div class="section-title-box">
-        <h2>🚀 Hành Trình Học Tập Của Hana</h2>
-        <p>Bé hãy chọn một bài học dưới đây để khám phá từ vựng và chơi game nhé! Hoặc xem hoạt hình trên <a href="https://www.youtube.com/watch?v=VzLplLkIFmw&list=PLZ27m2K2W5n4YTZYZ3M2z2nn81gjYRFNx" target="_blank" class="yt-playlist-link">YouTube Playlist 📺</a></p>
+        <h2>🗺️ Bản Đồ Hành Trình Phiêu Lưu Của Hana & LuLu</h2>
+        <p>Hana hãy cùng bạn Gấu Trúc LuLu thám hiểm 10 thành phố lớn, tích lũy XP thăng cấp và đánh bại các Boss cuối tuần tinh nghịch để thu thập đủ 10 Huy hiệu nhé! 🚀</p>
+      </div>
+
+      <!-- Badge Inventory Area -->
+      <div class="badge-inventory-section">
+        <h3>🎒 Túi Đồ Huy Hiệu Thành Phố của Hana</h3>
+        <div class="badge-grid" id="badge-grid">
+          <div class="badge-item locked" id="badge-60-item" title="Đánh bại Boss Bài 60 tại Thượng Hải để nhận!">
+            <span class="badge-icon">⚓</span>
+            <span class="badge-title">Thượng Hải</span>
+          </div>
+          <div class="badge-item locked" id="badge-61-item" title="Đánh bại Boss Bài 61 tại Hải Nam để nhận!">
+            <span class="badge-icon">🐚</span>
+            <span class="badge-title">Hải Nam</span>
+          </div>
+          <div class="badge-item locked" id="badge-62-item" title="Đánh bại Boss Bài 62 tại Quế Lâm để nhận!">
+            <span class="badge-icon">⛰️</span>
+            <span class="badge-title">Quế Lâm</span>
+          </div>
+          <div class="badge-item locked" id="badge-63-item" title="Đánh bại Boss Bài 63 tại Thành Đô để nhận!">
+            <span class="badge-icon">🐼</span>
+            <span class="badge-title">Thành Đô</span>
+          </div>
+          <div class="badge-item locked" id="badge-64-item" title="Đánh bại Boss Bài 64 tại Bắc Kinh để nhận!">
+            <span class="badge-icon">🏯</span>
+            <span class="badge-title">Bắc Kinh</span>
+          </div>
+          <div class="badge-item locked" id="badge-65-item" title="Đánh bại Boss Bài 65 tại Đôn Hoàng để nhận!">
+            <span class="badge-icon">🏜️</span>
+            <span class="badge-title">Đôn Hoàng</span>
+          </div>
+          <div class="badge-item locked" id="badge-66-item" title="Đánh bại Boss Bài 66 tại Tây An để nhận!">
+            <span class="badge-icon">🛡️</span>
+            <span class="badge-title">Tây An</span>
+          </div>
+          <div class="badge-item locked" id="badge-67-item" title="Đánh bại Boss Bài 67 tại Tây Tạng để nhận!">
+            <span class="badge-icon">🏔️</span>
+            <span class="badge-title">Tây Tạng</span>
+          </div>
+          <div class="badge-item locked" id="badge-68-item" title="Đánh bại Boss Bài 68 tại Phượng Hoàng để nhận!">
+            <span class="badge-icon">🏮</span>
+            <span class="badge-title">Phượng Hoàng</span>
+          </div>
+          <div class="badge-item locked" id="badge-69-item" title="Đánh bại Boss Bài 69 tại Himalaya để nhận!">
+            <span class="badge-icon">❄️</span>
+            <span class="badge-title">Himalaya</span>
+          </div>
+        </div>
       </div>
 
       <!-- Lessons Grid -->
@@ -277,9 +333,9 @@
 
       <!-- Encouragement Mascot Card -->
       <div class="mascot-encouragement">
-        <div class="mascot-avatar">✏️</div>
+        <div class="mascot-avatar">🐼</div>
         <div class="mascot-bubble">
-          <p><strong>Bút Thần Kỳ nhắn nhủ:</strong> "Hana đang làm rất tốt! Hãy học bài 67 thật chăm chỉ để đạt điểm tối đa và gửi kết quả về Google Chat khoe mẹ nhé! Cố lên con yêu!"</p>
+          <p><strong>Gấu Trúc LuLu cổ vũ:</strong> "Hana ơi, bến cảng Thượng Hải rất thú vị! Bé hãy hoàn thành 3 nhiệm vụ và đánh bại Boss ở đây để mở khóa bản đồ đến hòn đảo Hải Nam xinh đẹp nhé! Cố lên nào!"</p>
         </div>
       </div>
 
