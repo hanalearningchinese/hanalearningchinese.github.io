@@ -410,7 +410,12 @@ function startTrainGame() {
   shuffledWords.forEach(item => {
     const card = document.createElement('div');
     card.className = 'draggable-word';
-    card.textContent = item.word;
+    card.style.display = 'flex';
+    card.style.flexDirection = 'column';
+    card.style.alignItems = 'center';
+    card.style.justifyContent = 'center';
+    card.style.gap = '2px';
+    card.innerHTML = `<span style="font-family: var(--font-chinese); font-size: 1.4rem;">${item.word}</span><span style="font-size: 0.8rem; font-weight: normal; color: var(--color-text-light);">${item.pinyin}</span>`;
     card.draggable = true;
     card.addEventListener('dragstart', (e) => {
       card.classList.add('dragging');
