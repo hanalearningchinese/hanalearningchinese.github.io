@@ -18,7 +18,7 @@ const vocabularyList = [
     "pinyin": "liū",
     "meaning_vi": "Lẻn, chuồn",
     "meaning_en": "sneak",
-    "sentence": "小猫偷偷溜 le 进来。",
+    "sentence": "小猫偷偷溜了进来。",
     "sentence_pinyin": "Xiǎomāo tōutōu liū le jìnlái.",
     "sentence_vi": "Chú mèo con lén lẻn đi vào."
   },
@@ -54,7 +54,7 @@ const vocabularyList = [
     "pinyin": "fāxiàn",
     "meaning_vi": "Phát hiện, tìm ra",
     "meaning_en": "find, discover",
-    "sentence": "幸好船长没有发现 chúng ta.",
+    "sentence": "幸好船长没有发现我们。",
     "sentence_pinyin": "Xínghǎo chuánzhǎng méiyǒu fāxiàn wǒmen.",
     "sentence_vi": "May mà thuyền trưởng không phát hiện ra chúng ta."
   },
