@@ -92,6 +92,21 @@ function updateDashboardStats() {
 
   let totalPoints = 0;
   let completedCount = 0;
+  let totalXP = 0;
+
+  // List of cities matching lessons 60 to 69
+  const cities = {
+    60: "Thượng Hải 🚢",
+    61: "Hải Nam 🌊",
+    62: "Quế Lâm ⛰️",
+    63: "Thành Đô 🐼",
+    64: "Bắc Kinh 🏯",
+    65: "Đôn Hoàng 🏜️",
+    66: "Tây An 🛡️",
+    67: "Tây Tạng 🏔️",
+    68: "Phượng Hoàng 🏮",
+    69: "Himalaya ❄️"
+  };
 
   // 2. Loop through lessons and update UI components
   Object.keys(lessons).forEach(num => {
@@ -106,9 +121,27 @@ function updateDashboardStats() {
     if (lesson.completed) {
       completedCount++;
       totalPoints += lesson.score;
+      // RPG rule: 1 point = 10 XP + 50 XP bonus for completion
+      totalXP += (lesson.score * 10) + 50;
+      
+      // Unlock badge UI
+      const badgeItem = document.getElementById(`badge-${num}-item`);
+      if (badgeItem) {
+        badgeItem.classList.remove('locked');
+        badgeItem.setAttribute('title', `Đã nhận Huy hiệu thám hiểm tại thành phố ${cities[num]}!`);
+      }
     }
 
     if (!card) return; // Guard in case of missing DOM elements
+
+    // Customize banner name to City
+    const lessonNumEl = card.querySelector('.lesson-num');
+    if (lessonNumEl) {
+      lessonNumEl.textContent = cities[num];
+      lessonNumEl.style.fontSize = "0.9rem";
+      lessonNumEl.style.padding = "6px 14px";
+      lessonNumEl.style.background = "var(--color-primary)";
+    }
 
     if (lesson.unlocked) {
       // Unlock state updates
@@ -117,19 +150,20 @@ function updateDashboardStats() {
       if (banner) banner.style.backgroundImage = "url('magic_pen_banner.png')";
 
       if (lesson.completed) {
-        badge.textContent = "Đã học";
+        badge.textContent = "Đã dẹp Boss";
         badge.className = "status-badge completed";
         scoreText.textContent = `Điểm: ${lesson.score}/50`;
       } else {
-        badge.textContent = "Chưa học";
+        badge.textContent = "Chưa Khám Phá";
         badge.className = "status-badge";
-        scoreText.textContent = "Điểm: --";
+        scoreText.textContent = "Boss: Sẵn sàng ⚔️";
+        scoreText.style.color = "var(--color-danger)";
       }
 
       // Inject active buttons
       if (actions) {
         actions.innerHTML = `
-          <a href="${lesson.url}" class="play-lesson-btn">Học Ngay ➡️</a>
+          <a href="${lesson.url}" class="play-lesson-btn">Thám Hiểm ➡️</a>
           <a href="${lesson.yt}" target="_blank" class="yt-watch-btn" title="Xem video trên YouTube">📺 Xem Phim</a>
         `;
       }
@@ -142,7 +176,7 @@ function updateDashboardStats() {
         banner.style.backgroundColor = "#cbd5e1";
       }
 
-      badge.textContent = "Chưa mở khóa";
+      badge.textContent = "Bị Khóa";
       badge.className = "status-badge locked";
       scoreText.textContent = "";
 
@@ -155,21 +189,41 @@ function updateDashboardStats() {
     }
   });
 
+  // Calculate RPG Level based on totalXP
+  // Formula: Level 1 = 0-99 XP, Level 2 = 100-199 XP, Level N = (N-1)*100 XP
+  const rpgLevel = Math.floor(totalXP / 100) + 1;
+  const currentXP = totalXP % 100;
+  
+  // Save RPG stats to localStorage
+  localStorage.setItem('rpg_level', rpgLevel);
+  localStorage.setItem('rpg_xp', totalXP);
+
   // 3. Update Header Stats
   document.getElementById('total-points').textContent = totalPoints;
   document.getElementById('completed-count').textContent = `${completedCount}/10`;
+  
+  // Update XP elements
+  const xpCurrentEl = document.getElementById('xp-current');
+  const xpNextEl = document.getElementById('xp-next');
+  const xpFillEl = document.getElementById('xp-bar-fill');
+  const lvlBadgeEl = document.getElementById('avatar-level');
+
+  if (xpCurrentEl) xpCurrentEl.textContent = currentXP;
+  if (xpNextEl) xpNextEl.textContent = 100;
+  if (xpFillEl) xpFillEl.style.width = `${currentXP}%`;
+  if (lvlBadgeEl) lvlBadgeEl.textContent = `Lv.${rpgLevel}`;
 
   // 4. Calculate Badge Name (Rank)
   const badgeNameEl = document.getElementById('badge-name');
-  if (totalPoints >= 450) {
-    badgeNameEl.textContent = "Trạng Nguyên Nhí 👑";
-  } else if (totalPoints >= 300) {
-    badgeNameEl.textContent = "Học Giả Siêu Cấp 🌟";
-  } else if (totalPoints >= 150) {
-    badgeNameEl.textContent = "Học Giả Chăm Chỉ 🌱";
-  } else if (totalPoints > 0) {
-    badgeNameEl.textContent = "Tân Binh Học Tập 🎒";
+  if (rpgLevel >= 15) {
+    badgeNameEl.textContent = "Nhà Thám Hiểm Huyền Thoại 👑";
+  } else if (rpgLevel >= 10) {
+    badgeNameEl.textContent = "Đại Hiệp Tiếng Trung ⚔️";
+  } else if (rpgLevel >= 6) {
+    badgeNameEl.textContent = "Thợ Săn Boss Tinh Nhuệ 🎯";
+  } else if (rpgLevel >= 3) {
+    badgeNameEl.textContent = "Du Khách Chăm Chỉ 🎒";
   } else {
-    badgeNameEl.textContent = "Học Giả Mới 🥚";
+    badgeNameEl.textContent = "Nhà Thám Hiểm Mới 🥚";
   }
 }
