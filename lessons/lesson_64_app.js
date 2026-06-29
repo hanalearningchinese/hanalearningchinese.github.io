@@ -392,12 +392,12 @@ function startTrainGame() {
   state.gameMatch.matchedCount = 0;
   
   carriagesContainer.innerHTML = '';
-  state.gameMatch.selectedWords.forEach(item => {
+  state.gameMatch.selectedWords.forEach((item, index) => {
     const carriage = document.createElement('div');
     carriage.className = 'carriage';
     carriage.innerHTML = `
-      <div class="carriage-meaning" title="${item.meaning_vi}">${item.meaning_vi}</div>
-      <div class="carriage-drop-zone" data-word="${item.word}">Thả chữ vào đây</div>
+      <div class="carriage-meaning">${item.meaning_vi}</div>
+      <div class="carriage-drop-zone" data-index="${index}">Thả chữ vào đây</div>
       <div class="wheel wheel-1"></div>
       <div class="wheel wheel-2"></div>
       <div class="carriage-hook"></div>
@@ -435,7 +435,8 @@ function startTrainGame() {
       e.preventDefault();
       zone.classList.remove('drag-over');
       const draggedWord = e.dataTransfer.getData('text/plain');
-      const targetWord = zone.dataset.word;
+      const wordIndex = parseInt(zone.dataset.index);
+      const targetWord = state.gameMatch.selectedWords[wordIndex].word;
       
       if (draggedWord === targetWord) {
         zone.classList.add('matched');
