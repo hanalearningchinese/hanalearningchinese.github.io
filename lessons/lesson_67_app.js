@@ -1,215 +1,98 @@
-﻿// ==========================================================================
-// APP LOGIC: LESSON 67
-// Includes Vocabulary data, Web Audio, TTS, Games, PDF generation & Google Chat
+// ==========================================================================
+// APP LOGIC: LESSON 67 (坐火车离开 - Rời Đi Bằng Tàu Hỏa) - RPG Edition
+// Includes Vocabulary data, Web Audio, TTS, Games, PDF generation & Telegram
 // ==========================================================================
 
 const vocabularyList = [
   {
-    word: "离开",
-    pinyin: "líkāi",
-    meaning_vi: "Rời khỏi, rời đi",
-    meaning_en: "leave",
-    sentence: "坐火车离开。",
-    sentence_pinyin: "Zuò huǒchē líkāi.",
-    sentence_vi: "Rời đi bằng tàu hỏa."
+    "word": "火车",
+    "pinyin": "huǒchē",
+    "meaning_vi": "Tàu hỏa",
+    "meaning_en": "train",
+    "sentence": "我们要坐火车去拉萨。",
+    "sentence_pinyin": "Wǒmen yào zuò huǒchē qù Lāsà.",
+    "sentence_vi": "Chúng ta phải đi tàu hỏa tới Lhasa."
   },
   {
-    word: "不敢",
-    pinyin: "bù gǎn",
-    meaning_vi: "Không dám",
-    meaning_en: "not dare to",
-    sentence: "我不敢相信你们竟然去了中国！",
-    sentence_pinyin: "Wǒ bù gǎn xiāngxìn nǐmen jìngrán qù le Zhōngguó!",
-    sentence_vi: "Mình không dám tin các bạn lại đi Trung Quốc đấy!"
+    "word": "离开",
+    "pinyin": "líkāi",
+    "meaning_vi": "Rời đi, rời khỏi",
+    "meaning_en": "leave",
+    "sentence": "火车马上要离开站台了。",
+    "sentence_pinyin": "Huǒchē mǎshàng yào líkāi zhàntái le.",
+    "sentence_vi": "Tàu hỏa sắp rời khỏi sân ga rồi."
   },
   {
-    word: "相信",
-    pinyin: "xiāngxìn",
-    meaning_vi: "Tin tưởng, tin",
-    meaning_en: "believe",
-    sentence: "我不敢相信你们竟然去了中国！",
-    sentence_pinyin: "Wǒ bù gǎn xiāngxìn nǐmen jìngrán qù le Zhōngguó!",
-    sentence_vi: "Mình không dám tin các bạn lại đi Trung Quốc đấy!"
+    "word": "车票",
+    "pinyin": "chēpiào",
+    "meaning_vi": "Vé xe, vé tàu",
+    "meaning_en": "ticket",
+    "sentence": "你的车票买了吗？",
+    "sentence_pinyin": "Nǐde chēpiào mǎi le ma?",
+    "sentence_vi": "Vé tàu của cậu đã mua chưa?"
   },
   {
-    word: "竟然",
-    pinyin: "jìngrán",
-    meaning_vi: "Lại, mà lại (ngạc nhiên)",
-    meaning_en: "unexpectedly, to one's surprise",
-    sentence: "我不敢相信你竟然去了中国！",
-    sentence_pinyin: "Wǒ bù gǎn xiāngxìn nǐ jìngrán qù le Zhōngguó!",
-    sentence_vi: "Mình không dám tin cậu lại đi Trung Quốc đấy!"
+    "word": "行李",
+    "pinyin": "xíngli",
+    "meaning_vi": "Hành lý",
+    "meaning_en": "luggage",
+    "sentence": "别忘了拿你的行李。",
+    "sentence_pinyin": "Bié wàngle ná nǐde xíngli.",
+    "sentence_vi": "Đừng quên mang theo hành lý của cậu nhé."
   },
   {
-    word: "中国",
-    pinyin: "Zhōngguó",
-    meaning_vi: "Trung Quốc",
-    meaning_en: "China",
-    sentence: "我不敢相信你们竟然去了中国！",
-    sentence_pinyin: "Wǒ bù gǎn xiāngxìn nǐmen jìngrán qù le Zhōngguó!",
-    sentence_vi: "Mình không dám tin các bạn lại đi Trung Quốc đấy!"
+    "word": "窗户",
+    "pinyin": "chuānghu",
+    "meaning_vi": "Cửa sổ",
+    "meaning_en": "window",
+    "sentence": "透过窗户可以看到雪山。",
+    "sentence_pinyin": "Tòuguò chuānghu kěyǐ kàndào xuěshān.",
+    "sentence_vi": "Qua cửa sổ có thể nhìn thấy những ngọn núi tuyết."
   },
   {
-    word: "交",
-    pinyin: "jiāo",
-    meaning_vi: "Kết bạn, giao thiệp",
-    meaning_en: "make friends",
-    sentence: "我们在那里交了一些很好的朋友。",
-    sentence_pinyin: "Wǒmen zài nàli jiāo le yìxiē hěn hǎo de péngyou.",
-    sentence_vi: "Chúng mình đã kết bạn với một vài người bạn rất tốt ở đó."
+    "word": "坐",
+    "pinyin": "zuò",
+    "meaning_vi": "Ngồi, đi (bằng tàu/xe)",
+    "meaning_en": "sit, ride",
+    "sentence": "我们坐在这里等火车吧。",
+    "sentence_pinyin": "Wǒmen zuò zài zhèlǐ děng huǒchē ba.",
+    "sentence_vi": "Chúng mình ngồi đây đợi tàu hỏa đi."
   },
   {
-    word: "奇妙",
-    pinyin: "qímiào",
-    meaning_vi: "Kỳ diệu, tuyệt vời",
-    meaning_en: "fantastic, wonderful",
-    sentence: "见到了许多很奇妙的东西！",
-    sentence_pinyin: "Jiàndào le xǔduō hěn qímiào de dōngxi!",
-    sentence_vi: "Đã nhìn thấy rất nhiều thứ kỳ diệu!"
+    "word": "风景",
+    "pinyin": "fēngjǐng",
+    "meaning_vi": "Phong cảnh, cảnh đẹp",
+    "meaning_en": "scenery",
+    "sentence": "窗外的风景真的太美丽了。",
+    "sentence_pinyin": "Chuāngwài de fēngjǐng zhēnde tài měilì le.",
+    "sentence_vi": "Phong cảnh ngoài cửa sổ thực sự đẹp quá."
   },
   {
-    word: "再次",
-    pinyin: "zàicì",
-    meaning_vi: "Lần nữa, lại",
-    meaning_en: "again, once more",
-    sentence: "再次见到 you 真好，杰克。",
-    sentence_pinyin: "Zàicì jiàndào nǐ zhēn hǎo, Jiékè.",
-    sentence_vi: "Thật vui khi được gặp lại cậu lần nữa, Jack."
+    "word": "准时",
+    "pinyin": "zhǔnshí",
+    "meaning_vi": "Đúng giờ, chuẩn giờ",
+    "meaning_en": "on time",
+    "sentence": "这趟火车非常准时。",
+    "sentence_pinyin": "Zhè tàng huǒchē fēicháng zhǔnshí.",
+    "sentence_vi": "Chuyến tàu này rất đúng giờ."
   },
   {
-    word: "好好",
-    pinyin: "hǎohāo",
-    meaning_vi: "Tốt, cẩn thận, đàng hoàng",
-    meaning_en: "well, carefully",
-    sentence: "你在新家里好好生活，照顾好自己。",
-    sentence_pinyin: "Nǐ zài xīn jiā li hǎohāo shēnghuó, zhàogù hǎo zìjǐ.",
-    sentence_vi: "Con ở nhà mới hãy sống thật tốt và chăm sóc bản thân cho tốt nhé."
+    "word": "速度",
+    "pinyin": "sùdù",
+    "meaning_vi": "Tốc độ",
+    "meaning_en": "speed",
+    "sentence": "火车的速度非常快。",
+    "sentence_pinyin": "Huǒchē de sùdù fēicháng kuài.",
+    "sentence_vi": "Tốc độ của tàu hỏa cực kỳ nhanh."
   },
   {
-    word: "生活",
-    pinyin: "shēnghuó",
-    meaning_vi: "Sống, cuộc sống",
-    meaning_en: "live, life",
-    sentence: "你在新家里好好生活，照顾好自己。",
-    sentence_pinyin: "Nǐ zài xīn jiā li hǎohāo shēnghuó, zhàogù hǎo zìjǐ.",
-    sentence_vi: "Con ở nhà mới hãy sống thật tốt và chăm sóc bản thân cho tốt nhé."
-  },
-  {
-    word: "照顾",
-    pinyin: "zhàogù",
-    meaning_vi: "Chăm sóc, trông nom",
-    meaning_en: "take care of",
-    sentence: "你在新家里好好生活，照顾好自己。",
-    sentence_pinyin: "Nǐ zài xīn jiā li hǎohāo shēnghuó, zhàogù hǎo zìjǐ.",
-    sentence_vi: "Con ở nhà mới hãy sống thật tốt và chăm sóc bản thân cho tốt nhé."
-  },
-  {
-    word: "支",
-    pinyin: "zhī",
-    meaning_vi: "Chiếc, cây (lượng từ vật dạng que)",
-    meaning_en: "measure word for stick-like objects",
-    sentence: "杰克，这支笔是我的！",
-    sentence_pinyin: "Jiékè, zhè zhī bǐ shì wǒ de!",
-    sentence_vi: "Jack, chiếc bút này là của mình!"
-  },
-  {
-    word: "汽车",
-    pinyin: "qìchē",
-    meaning_vi: "Xe hơi, ô tô",
-    meaning_en: "car",
-    sentence: "有回家的汽车吗？",
-    sentence_pinyin: "Yǒu huí jiā de qìchē ma?",
-    sentence_vi: "Có xe về nhà không?"
-  },
-  {
-    word: "看不清",
-    pinyin: "kàn bu qīng",
-    meaning_vi: "Không nhìn rõ, mờ mắt",
-    meaning_en: "not able to see clearly",
-    sentence: "我看不清。",
-    sentence_pinyin: "Wǒ kàn bu qīng.",
-    sentence_vi: "Mình không nhìn rõ."
-  },
-  {
-    word: "得",
-    pinyin: "děi",
-    meaning_vi: "Phải, cần phải",
-    meaning_en: "need to, must",
-    sentence: "我们得去机场看看。",
-    sentence_pinyin: "Wǒmen děi qù jīchǎng kànkan.",
-    sentence_vi: "Chúng ta phải đến sân bay xem sao."
-  },
-  {
-    word: "机场",
-    pinyin: "jīchǎng",
-    meaning_vi: "Sân bay, phi trường",
-    meaning_en: "airport",
-    sentence: "我们得去机场看看。",
-    sentence_pinyin: "Wǒmen děi qù jīchǎng kànkan.",
-    sentence_vi: "Chúng ta phải đến sân bay xem sao."
-  },
-  {
-    word: "航班",
-    pinyin: "hángbān",
-    meaning_vi: "Chuyến bay",
-    meaning_en: "flight",
-    sentence: "航班也没有了。",
-    sentence_pinyin: "Hángbān yě méiyǒu le.",
-    sentence_vi: "Chuyến bay cũng không còn nữa rồi."
-  },
-  {
-    word: "该",
-    pinyin: "gāi",
-    meaning_vi: "Nên, cần nên",
-    meaning_en: "should",
-    sentence: "我们該怎么办？",
-    sentence_pinyin: "Wǒmen gāi zěnmebàn?",
-    sentence_vi: "Chúng ta nên làm thế nào đây?"
-  },
-  {
-    word: "怎么办",
-    pinyin: "zěnmebàn",
-    meaning_vi: "Làm sao, làm thế nào",
-    meaning_en: "what's to be done",
-    sentence: "我们该怎么办？",
-    sentence_pinyin: "Wǒmen gāi zěnmebàn?",
-    sentence_vi: "Chúng ta nên làm thế nào đây?"
-  },
-  {
-    word: "火车站",
-    pinyin: "huǒchēzhàn",
-    meaning_vi: "Ga tàu hỏa, nhà ga",
-    meaning_en: "train station",
-    sentence: "我们去火车站看看。",
-    sentence_pinyin: "Wǒmen qù huǒchēzhàn kànkan.",
-    sentence_vi: "Chúng ta đến ga tàu hỏa xem thử đi."
-  },
-  {
-    word: "马上",
-    pinyin: "mǎshàng",
-    meaning_vi: "Ngay lập tức, sắp sửa",
-    meaning_en: "right away, immediately",
-    sentence: "但是马上要开了。",
-    sentence_pinyin: "Dànshì mǎshàng yào kāi le.",
-    sentence_vi: "Nhưng xe/tàu sắp chạy ngay rồi."
-  },
-  {
-    word: "要...了",
-    pinyin: "yào...le",
-    meaning_vi: "Sắp... rồi, chuẩn bị... rồi",
-    meaning_en: "going to, about to",
-    sentence: "但是马上要开了。",
-    sentence_pinyin: "Dànshì mǎshàng yào kāi le.",
-    sentence_vi: "Nhưng xe/tàu sắp chạy ngay rồi."
-  },
-  {
-    word: "错过",
-    pinyin: "cuòguò",
-    meaning_vi: "Bỏ lỡ, lỡ (chuyến tàu, cơ hội)",
-    meaning_en: "miss (train, opportunity)",
-    sentence: "我们要错过了！",
-    sentence_pinyin: "Wǒmen yào cuòguò le!",
-    sentence_vi: "Chúng ta sắp lỡ mất rồi!"
+    "word": "期待",
+    "pinyin": "qīdài",
+    "meaning_vi": "Mong đợi, trông mong",
+    "meaning_en": "look forward to",
+    "sentence": "我非常期待这次的高原旅程。",
+    "sentence_pinyin": "Wǒ fēicháng qīdài zhècì de gāoyuán lǚchéng.",
+    "sentence_vi": "Tớ cực kỳ mong đợi chuyến đi cao nguyên lần này."
   }
 ];
 
@@ -338,7 +221,9 @@ const state = {
   gameQuiz: {
     questions: [],
     currentQuestionIndex: 0,
-    score: 0
+    score: 0,
+    bossHP: 100,
+    playerLives: 3
   }
 };
 
@@ -373,81 +258,76 @@ function setupTabs() {
 
 function setupAudioToggle() {
   const btn = document.getElementById('btn-sound-toggle');
-  const btnText = btn.querySelector('.btn-text');
-  const iconPath = document.getElementById('sound-icon-path');
+  if (!btn) return;
   btn.addEventListener('click', () => {
     audioEnabled = !audioEnabled;
-    soundEffects.click();
+    const textSpan = btn.querySelector('.btn-text');
+    const path = document.getElementById('sound-icon-path');
     if (audioEnabled) {
-      btnText.textContent = "Âm thanh: Bật";
-      iconPath.setAttribute('d', 'M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z');
+      if (textSpan) textSpan.textContent = "Âm thanh: Bật";
+      if (path) path.setAttribute('d', 'M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z');
+      soundEffects.click();
     } else {
-      btnText.textContent = "Âm thanh: Tắt";
-      iconPath.setAttribute('d', 'M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.21.05-.42.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z');
+      if (textSpan) textSpan.textContent = "Âm thanh: Tắt";
+      if (path) path.setAttribute('d', 'M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.21.05-.42.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z');
     }
   });
 }
 
 // SLIDE DECK SYSTEM
 function setupSlideDeck() {
-  const btnPrev = document.getElementById('btn-prev-slide');
-  const btnNext = document.getElementById('btn-next-slide');
-  document.getElementById('total-slides-num').textContent = vocabularyList.length;
-  document.getElementById('vocab-count').textContent = vocabularyList.length;
-  
-  btnPrev.addEventListener('click', () => {
-    if (state.currentSlide > 0) {
-      state.currentSlide--;
-      soundEffects.click();
-      renderSlide();
-    }
-  });
-  btnNext.addEventListener('click', () => {
-    if (state.currentSlide < vocabularyList.length - 1) {
-      state.currentSlide++;
-      soundEffects.click();
-      renderSlide();
-    }
-  });
-  
-  const sidebar = document.getElementById('vocab-quick-list');
-  sidebar.innerHTML = '';
-  vocabularyList.forEach((item, index) => {
-    const div = document.createElement('div');
-    div.className = `vocab-item ${index === 0 ? 'active' : ''}`;
-    div.dataset.index = index;
-    div.innerHTML = `
-      <span class="vocab-item-cn">${item.word}</span>
-      <span class="vocab-item-vi">${item.meaning_vi}</span>
-    `;
-    div.addEventListener('click', () => {
-      soundEffects.click();
-      state.currentSlide = index;
-      renderSlide();
-    });
-    sidebar.appendChild(div);
-  });
   renderSlide();
+  document.getElementById('btn-prev-slide').addEventListener('click', () => {
+    if (state.currentSlide > 0) {
+      soundEffects.click();
+      state.currentSlide--;
+      renderSlide();
+    }
+  });
+  document.getElementById('btn-next-slide').addEventListener('click', () => {
+    if (state.currentSlide < vocabularyList.length - 1) {
+      soundEffects.click();
+      state.currentSlide++;
+      renderSlide();
+    }
+  });
+  
+  const quickList = document.getElementById('vocab-quick-list');
+  if (quickList) {
+    quickList.innerHTML = '';
+    vocabularyList.forEach((item, idx) => {
+      const el = document.createElement('div');
+      el.className = 'vocab-item-link';
+      el.innerHTML = `<span class="vocab-link-cn">${item.word}</span> <span class="vocab-link-vi">${item.meaning_vi}</span>`;
+      el.addEventListener('click', () => {
+        soundEffects.click();
+        state.currentSlide = idx;
+        renderSlide();
+        document.getElementById('section-lesson').scrollIntoView({ behavior: 'smooth' });
+      });
+      quickList.appendChild(el);
+    });
+  }
+  const countEl = document.getElementById('vocab-count');
+  if (countEl) countEl.textContent = vocabularyList.length;
+  const totalSlidesEl = document.getElementById('total-slides-num');
+  if (totalSlidesEl) totalSlidesEl.textContent = vocabularyList.length;
 }
 
 function renderSlide() {
-  const data = vocabularyList[state.currentSlide];
   const card = document.getElementById('slide-card');
+  if (!card) return;
+  
+  const data = vocabularyList[state.currentSlide];
   document.getElementById('current-slide-num').textContent = state.currentSlide + 1;
   
-  document.querySelectorAll('.vocab-item').forEach(item => {
-    item.classList.remove('active');
-    if (parseInt(item.dataset.index) === state.currentSlide) {
-      item.classList.add('active');
-      item.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    }
-  });
-  
+  // Highlight targeted characters
   let highlightedSentence = data.sentence;
   if (data.sentence.includes(data.word)) {
-    highlightedSentence = data.sentence.replace(new RegExp(data.word, 'g'), `<span class="highlight">${data.word}</span>`);
+    highlightedSentence = data.sentence.replace(data.word, `<span class="highlight">${data.word}</span>`);
   } else {
-    if (data.word === "要... l" && data.sentence.includes("要") && data.sentence.includes("了")) {
+    // Edge cases
+    if (data.word === "要...了" && data.sentence.includes("要") && data.sentence.includes("了")) {
       highlightedSentence = data.sentence.replace("要", `<span class="highlight">要</span>`).replace("了", `<span class="highlight">了</span>`);
     } else {
       ["得", "该", "交", "支"].forEach(char => {
@@ -596,7 +476,7 @@ function completeTrainGame() {
   }, 1200);
 }
 
-// GAME 2: QUIZ GAME
+// GAME 2: RPG BOSS BATTLE
 function setupQuizGame() {
   const btnNext = document.getElementById('btn-next-quiz');
   const btnReset = document.getElementById('btn-reset-quiz');
@@ -618,7 +498,15 @@ function setupQuizGame() {
 function startQuizGame() {
   state.gameQuiz.score = 0;
   state.gameQuiz.currentQuestionIndex = 0;
-  document.getElementById('quiz-score-val').textContent = '0';
+  state.gameQuiz.bossHP = 100;
+  state.gameQuiz.playerLives = 3;
+  
+  // Reset Boss UI
+  document.getElementById('boss-hp-fill').style.width = '100%';
+  document.getElementById('heart-1').classList.remove('lost');
+  document.getElementById('heart-2').classList.remove('lost');
+  document.getElementById('heart-3').classList.remove('lost');
+  
   const shuffled = [...vocabularyList].sort(() => 0.5 - Math.random());
   state.gameQuiz.questions = shuffled.slice(0, 5);
   document.getElementById('quiz-total-q').textContent = state.gameQuiz.questions.length;
@@ -671,14 +559,58 @@ function renderQuizQuestion() {
   });
 }
 
+function triggerSpellEffect(fromEl, toEl, emoji, callback) {
+  const container = document.getElementById('app-rpg-container');
+  const fromRect = fromEl.getBoundingClientRect();
+  const toRect = toEl.getBoundingClientRect();
+  const containerRect = container.getBoundingClientRect();
+
+  const spell = document.createElement('div');
+  spell.className = 'boss-spell';
+  spell.textContent = emoji;
+  spell.style.left = `${fromRect.left - containerRect.left + fromRect.width/2}px`;
+  spell.style.top = `${fromRect.top - containerRect.top + fromRect.height/2}px`;
+  container.appendChild(spell);
+
+  setTimeout(() => {
+    spell.style.left = `${toRect.left - containerRect.left + toRect.width/2}px`;
+    spell.style.top = `${toRect.top - containerRect.top + toRect.height/2}px`;
+    spell.style.transform = 'scale(1.8) rotate(360deg)';
+  }, 50);
+
+  setTimeout(() => {
+    spell.remove();
+    if (callback) callback();
+  }, 500);
+}
+
 function handleQuizAnswer(isCorrect, clickedBtn, data) {
   const feedback = document.getElementById('quiz-feedback');
   const btns = document.querySelectorAll('.quiz-option-btn');
+  const heroEl = document.getElementById('rpg-hero');
+  const bossEl = document.getElementById('rpg-boss');
+  const arenaEl = document.querySelector('.boss-battle-container');
+
   if (isCorrect) {
     soundEffects.success();
     clickedBtn.classList.add('correct');
     feedback.className = 'quiz-feedback success';
-    feedback.textContent = '🎉 Chính xác! Giỏi lắm Hana ơi!';
+    feedback.textContent = '🎉 Chính xác! Bạn LuLu tung chưởng tấn công Boss!';
+    
+    // Spell attack animation
+    triggerSpellEffect(heroEl, bossEl, "✨", () => {
+      // Shakes the Boss on hits
+      bossEl.animate([
+        { transform: 'scale(1)' },
+        { transform: 'scale(1.3) rotate(15deg)', filter: 'hue-rotate(90deg)' },
+        { transform: 'scale(1)' }
+      ], { duration: 300 });
+      
+      // Decrease HP
+      state.gameQuiz.bossHP -= 20;
+      document.getElementById('boss-hp-fill').style.width = `${state.gameQuiz.bossHP}%`;
+    });
+
     const blank = document.getElementById('blank-spot');
     if (blank) {
       blank.textContent = data.word;
@@ -687,15 +619,40 @@ function handleQuizAnswer(isCorrect, clickedBtn, data) {
     speakChinese(data.sentence);
     btns.forEach(btn => btn.classList.add('disabled'));
     state.gameQuiz.score += 10;
-    document.getElementById('quiz-score-val').textContent = state.gameQuiz.score;
     document.getElementById('btn-next-quiz').classList.remove('hidden');
   } else {
     soundEffects.error();
     clickedBtn.classList.add('wrong');
     clickedBtn.classList.add('disabled');
     feedback.className = 'quiz-feedback error';
-    feedback.textContent = '😢 Chưa đúng rồi, bé chọn lại nhé!';
+    feedback.textContent = '😢 Ôi không! Boss đã phản công LuLu rồi!';
+
+    // Boss counter attack animation
+    triggerSpellEffect(bossEl, heroEl, "☄️", () => {
+      // Shake screen
+      arenaEl.classList.add('shake-element');
+      setTimeout(() => { arenaEl.classList.remove('shake-element'); }, 400);
+
+      // Deduct live
+      state.gameQuiz.playerLives--;
+      const targetHeart = document.getElementById(`heart-${state.gameQuiz.playerLives + 1}`);
+      if (targetHeart) targetHeart.classList.add('lost');
+
+      if (state.gameQuiz.playerLives <= 0) {
+        setTimeout(failBossBattle, 500);
+      }
+    });
   }
+}
+
+function failBossBattle() {
+  showModal({
+    title: "Thất Bại Rồi! 😢💥",
+    message: "Hana và bạn LuLu đã hết sinh mệnh trước sức mạnh của Boss!",
+    stats: "Hãy nhấp hồi phục để chuẩn bị chiến đấu lại nhé!",
+    actionText: "Hồi Phục Sinh Mệnh 💖",
+    actionCallback: () => { startQuizGame(); }
+  });
 }
 
 function completeQuizGame() {
@@ -706,10 +663,10 @@ function completeQuizGame() {
   localStorage.setItem('lesson_67_completed', 'true');
   
   showModal({
-    title: "Chúc Mừng Hana! 🏆🌟",
-    message: "Bé đã vượt qua tất cả các câu hỏi trắc nghiệm thử thách!",
-    stats: `Điểm số trắc nghiệm: ${finalScore} / 50 điểm ⭐`,
-    actionText: "Chơi Lại Trắc Nghiệm 🔄",
+    title: "Đã Diệt Boss Thượng Hải! 🏆🐼",
+    message: "Chúc mừng Hana và LuLu đã thám hiểm thành phố thành công và nhận Huy hiệu!",
+    stats: `Boss bị diệt! HP: 0% | Điểm nhận được: ${finalScore} / 50 điểm ⭐`,
+    actionText: "Đấu Boss Lại ⚔️",
     actionCallback: () => { startQuizGame(); },
     showReporting: true
   });
@@ -745,12 +702,12 @@ function generatePDF(score) {
     doc.setFont("helvetica", "bold");
     doc.setFontSize(22);
     doc.setTextColor(139, 92, 246);
-    doc.text("PHIEU DIEM HOC TIENG TRUNG", 105, 35, { align: "center" });
+    doc.text("CHUNG NHAN THAM HIEM TIENG TRUNG", 105, 35, { align: "center" });
     
     // Sub-title
     doc.setFontSize(14);
     doc.setTextColor(14, 165, 233); // Blue
-    doc.text("Chuong Trinh: But Phep Thuat 67", 105, 45, { align: "center" });
+    doc.text("Chuyen Di Thám Hiem: But Phep Thuat 67", 105, 45, { align: "center" });
     
     // Separator line
     doc.setDrawColor(226, 232, 240);
@@ -761,19 +718,19 @@ function generatePDF(score) {
     doc.setFont("helvetica", "bold");
     doc.setFontSize(12);
     doc.setTextColor(30, 27, 75);
-    doc.text("Hoc vien:", 30, 70);
+    doc.text("Nha Thám Hiem:", 30, 70);
     doc.setFont("helvetica", "normal");
-    doc.text("Hana (9 tuoi)", 70, 70);
+    doc.text("Hana & Gau Truc LuLu", 70, 70);
     
     doc.setFont("helvetica", "bold");
-    doc.text("Bai hoc:", 30, 80);
+    doc.text("Dia danh dat den:", 30, 80);
     doc.setFont("helvetica", "normal");
-    doc.text("Bai 67 - Zuo huoche likai (Roi di bang tau hoa)", 70, 80);
+    doc.text("Thanh Pho: Tây Tạng (Bai 67 - Zuo huoche likai)", 70, 80);
     
     doc.setFont("helvetica", "bold");
-    doc.text("Ngay hoan thanh:", 30, 90);
+    doc.text("Huy hieu dat duoc:", 30, 90);
     doc.setFont("helvetica", "normal");
-    doc.text(new Date().toLocaleDateString('vi-VN'), 70, 90);
+    doc.text("Huy Hieu 🏔️ Tây Tạng", 70, 90);
     
     // Score board card
     doc.setFillColor(248, 250, 252);
@@ -785,35 +742,40 @@ function generatePDF(score) {
     doc.setFont("helvetica", "bold");
     doc.setFontSize(16);
     doc.setTextColor(16, 185, 129); // Green
-    doc.text("KET QUA DAT DUOC", 105, 118, { align: "center" });
+    doc.text("CHI SO KHAM PHA THU THACH", 105, 118, { align: "center" });
     doc.setFontSize(20);
-    doc.text(`${score} / 50 DIEM`, 105, 134, { align: "center" });
+    doc.text(`${score} / 50 DIEM (TIET DIET BOSS 100%)`, 105, 134, { align: "center" });
     
     // Detail Checklist
     doc.setFont("helvetica", "bold");
     doc.setFontSize(12);
     doc.setTextColor(30, 27, 75);
-    doc.text("Noi dung hoc da hoan thanh:", 30, 165);
+    doc.text("Cac nhiem vu da hoan thanh:", 30, 165);
     
     doc.setFont("helvetica", "normal");
-    doc.setFontSize(11);
-    doc.setTextColor(71, 85, 105);
-    doc.text("- Nhận diện mặt chữ & bính âm của 23 từ vựng của bài.", 35, 175);
-    doc.text("- Hoàn thành trò chơi kéo thả từ vựng ghép toa xe lửa.", 35, 183);
-    doc.text("- Trả lời đúng các câu trắc nghiệm hoàn thiện câu trong bài học.", 35, 191);
+    doc.text("- Nhiem vu 1: Xem Phim Hoat Hinh Tieu Thuyết [Hoan Thanh]", 35, 177);
+    doc.text("- Nhiem vu 2: Tham Hiem Tu Vung Hinh Chuyen [Hoan Thanh]", 35, 187);
+    doc.text("- Nhiem vu 3: Ghep Tu Chay Tau Hoa [Hoan Thanh]", 35, 197);
+    doc.text("- Nhiem vu 4: Tieu Diet Boss Cuoi Tuan [Hoan Thanh]", 35, 207);
     
-    // Footer encouragement
-    doc.setFont("helvetica", "italic");
+    // Decorative Badge Frame
+    doc.setDrawColor(245, 158, 11);
+    doc.setFillColor(254, 243, 199);
+    doc.rect(70, 222, 70, 25, "FD");
+    doc.setFont("helvetica", "bold");
     doc.setFontSize(12);
-    doc.setTextColor(139, 92, 246);
-    doc.text("Chuc mung Hana da hoan thanh xuat sac bai hoc!", 105, 230, { align: "center" });
-    doc.text("Con hay co gang o nhung bai hoc tiep theo nhe! Let's Go!", 105, 238, { align: "center" });
+    doc.setTextColor(245, 158, 11);
+    doc.text("HUY HIEU: 🏔️", 105, 238, { align: "center" });
     
-    // Download the PDF
-    doc.save(`Phieu_diem_Hana_Bai_67.pdf`);
+    // Footer notice
+    doc.setFont("helvetica", "italic");
+    doc.setFontSize(10);
+    doc.setTextColor(107, 114, 128);
+    doc.text("Ban LuLu va But Than Ky se dong hanh cung Hana o cac chang tiep theo!", 105, 265, { align: "center" });
+    
+    doc.save("Phieu_diem_Hana_Bai_67.pdf");
   } catch (err) {
-    console.error("Error generating PDF:", err);
-    alert("Có lỗi xảy ra khi tạo PDF, bạn vui lòng kiểm tra lại trình duyệt nhé.");
+    console.error("PDF generation failed:", err);
   }
 }
 
@@ -830,21 +792,20 @@ function sendReportToGChat(score) {
   
   const payload = {
     student: "Hana",
-    lesson: "Bài 67: 坐火车离开 (Rời đi bằng tàu hỏa)",
+    lesson: "Bai 67: Giao dien RPG - Quyết Đấu Boss Tây Tạng",
     score: score,
     date: new Date().toLocaleDateString('vi-VN')
   };
   
   fetch(CONFIG.APPS_SCRIPT_URL, {
     method: "POST",
-    mode: "no-cors", // Required to send requests without CORS blockage from browser to Apps Script
+    mode: "no-cors",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(payload)
   })
   .then(() => {
-    // Note: mode 'no-cors' will return an opaque response with status 0. We assume success if it doesn't throw.
     statusDiv.textContent = "Gửi báo cáo thành công! Check Google Chat nhé mẹ ơi! ❤️";
     statusDiv.className = "gchat-status success";
   })
@@ -886,4 +847,3 @@ function showModal({ title, message, stats, actionText, actionCallback, showRepo
   
   overlay.classList.add('active');
 }
-
