@@ -45,7 +45,7 @@ const vocabularyList = [
     "pinyin": "pàng",
     "meaning_vi": "Béo, mập mạp",
     "meaning_en": "fat, chubby",
-    "sentence": "它长得胖乎乎 của.",
+    "sentence": "它长得胖乎乎的。",
     "sentence_pinyin": "Tā zhǎng de pànghūhū de.",
     "sentence_vi": "Cậu ấy trông béo múp míp."
   },
