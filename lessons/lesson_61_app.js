@@ -63,7 +63,7 @@ const vocabularyList = [
     "pinyin": "měilì",
     "meaning_vi": "Xinh đẹp, đẹp đẽ",
     "meaning_en": "beautiful",
-    "sentence": "这里的海底 world 真美丽！",
+    "sentence": "这里的海底世界真美丽！",
     "sentence_pinyin": "Zhèlǐ de hǎidǐ shìjiè zhēn měilì!",
     "sentence_vi": "Thế giới dưới đáy biển ở đây thật xinh đẹp!"
   },
