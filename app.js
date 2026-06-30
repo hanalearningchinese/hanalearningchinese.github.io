@@ -79,6 +79,27 @@ function updateDashboardStats() {
       url: 'lessons/lesson_69.html',
       yt: 'https://www.youtube.com/watch?v=9xZvrLqiqTo',
       unlocked: false
+    },
+    70: {
+      completed: localStorage.getItem('lesson_70_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_70_score') || '0'),
+      url: 'lessons/lesson_70.html',
+      yt: 'https://www.youtube.com/watch?v=R9Ym5s2nWeI',
+      unlocked: false
+    },
+    71: {
+      completed: localStorage.getItem('lesson_71_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_71_score') || '0'),
+      url: 'lessons/lesson_71.html',
+      yt: 'https://www.youtube.com/watch?v=F_fD6hO6d7o',
+      unlocked: false
+    },
+    72: {
+      completed: localStorage.getItem('lesson_72_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_72_score') || '0'),
+      url: 'lessons/lesson_72.html',
+      yt: 'https://www.youtube.com/watch?v=hB9i8a_b5rU',
+      unlocked: false
     }
   };
 
