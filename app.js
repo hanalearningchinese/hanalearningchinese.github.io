@@ -85,7 +85,7 @@ function updateDashboardStats() {
       score: parseInt(localStorage.getItem('lesson_70_score') || '0'),
       url: 'lessons/lesson_70.html',
       yt: 'https://www.youtube.com/watch?v=R9Ym5s2nWeI',
-      unlocked: false
+      unlocked: true // Mở khóa mặc định cho Hana theo yêu cầu
     },
     71: {
       completed: localStorage.getItem('lesson_71_completed') === 'true',
@@ -100,11 +100,18 @@ function updateDashboardStats() {
       url: 'lessons/lesson_72.html',
       yt: 'https://www.youtube.com/watch?v=hB9i8a_b5rU',
       unlocked: false
+    },
+    73: {
+      completed: localStorage.getItem('lesson_73_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_73_score') || '0'),
+      url: 'lessons/lesson_73.html',
+      yt: 'https://www.youtube.com/watch?v=UbuxXfm1gz4',
+      unlocked: false
     }
   };
 
   // Determine unlock status dynamically
-  const seq = [60, 61, 62, 63, 64, 65, 66, 67, 68, 69];
+  const seq = [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72];
   for (let i = 0; i < seq.length - 1; i++) {
     if (lessons[seq[i]].completed) {
       lessons[seq[i+1]].unlocked = true;
@@ -115,7 +122,7 @@ function updateDashboardStats() {
   let completedCount = 0;
   let totalXP = 0;
 
-  // List of cities matching lessons 60 to 69
+  // List of cities matching lessons 60 to 72
   const cities = {
     60: "Thượng Hải 🚢",
     61: "Hải Nam 🌊",
@@ -126,7 +133,10 @@ function updateDashboardStats() {
     66: "Tây An 🛡️",
     67: "Tây Tạng 🏔️",
     68: "Phượng Hoàng 🏮",
-    69: "Himalaya ❄️"
+    69: "Himalaya ❄️",
+    70: "Siêu Thị 🛒",
+    71: "Sở Thú 🦁",
+    72: "Hoạt Hình 🎬"
   };
 
   // 2. Loop through lessons and update UI components
@@ -221,7 +231,7 @@ function updateDashboardStats() {
 
   // 3. Update Header Stats
   document.getElementById('total-points').textContent = totalPoints;
-  document.getElementById('completed-count').textContent = `${completedCount}/10`;
+  document.getElementById('completed-count').textContent = `${completedCount}/13`;
   
   // Update XP elements
   const xpCurrentEl = document.getElementById('xp-current');
