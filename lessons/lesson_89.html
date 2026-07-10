@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài 89: Hôm Nay Bạn Đã Làm Gì?</title>
+  <!-- Google Fonts for child-friendly typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Nunito:wght@300..900&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="lesson_67_style.css"> <!-- Reuses the same design system stylesheet! -->
+  <!-- jsPDF Library for generating PDF report cards -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- App Container -->
+  <div class="app-container" id="app-rpg-container">
+    
+    <!-- Header Area -->
+    <header class="app-header">
+      <div class="header-logo">
+        <a href="../index.html" class="btn-back-home" title="Về trang chủ">🏠</a>
+        <span class="magic-star">✨</span>
+        <h1>Bài 89: <span>你今天做什么了？</span></h1>
+      </div>
+      <div class="audio-controls">
+        <a href="https://www.youtube.com/watch?v=R9j0v0bXN9Y" target="_blank" class="control-btn yt-header-btn" title="Xem phim hoạt hình">
+          📺 Xem Phim
+        </a>
+        <button id="btn-sound-toggle" class="control-btn" title="Bật/Tắt âm thanh game">
+          <svg class="icon" viewBox="0 0 24 24" width="24" height="24">
+            <path id="sound-icon-path" d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" fill="currentColor"/>
+          </svg>
+          <span class="btn-text">Âm thanh: Bật</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="app-nav">
+      <button class="nav-tab active" data-target="section-lesson">
+        <span class="nav-icon">📖</span> Học Từ Vựng
+      </button>
+      <button class="nav-tab" data-target="section-game-match">
+        <span class="nav-icon">🚂</span> Ghép Từ Chạy Tàu
+      </button>
+      <button class="nav-tab" data-target="section-game-quiz">
+        <span class="nav-icon">⚔️</span> Quyết Đấu Boss
+      </button>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="app-main">
+
+      <!-- Section: Lesson Slides -->
+      <section id="section-lesson" class="tab-content active">
+        
+        <!-- Audio Player for YCT 2 Listening Practice -->
+        <div class="audio-player-yct">
+          <span class="player-label">🎧 Luyện Nghe Bài học:</span>
+          <audio controls src="https://www.nhantriviet.com/ntv/wp-content/uploads/2018/07/09-01-Giáo-trình-chuẩn-YCT-2.mp3"></audio>
+        </div>
+        
+        <div class="lesson-layout">
+          <!-- Slide Container -->
+          <div class="slide-card-wrapper">
+            <div id="slide-card" class="slide-card">
+              <!-- Content injected by JS -->
+            </div>
+            
+            <!-- Slide Navigation Controls -->
+            <div class="slide-controls">
+              <button id="btn-prev-slide" class="slide-nav-btn">⬅️ Trước</button>
+              <div class="slide-indicator">
+                <span id="current-slide-num">1</span> / <span id="total-slides-num">10</span>
+              </div>
+              <button id="btn-next-slide" class="slide-nav-btn">Sau ➡️</button>
+            </div>
+          </div>
+
+          <!-- Vocabulary List Overview -->
+          <div class="vocab-sidebar">
+            <h3>Danh sách từ (<span id="vocab-count">0</span>)</h3>
+            <div class="vocab-quick-list" id="vocab-quick-list">
+              <!-- List items injected by JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Matching Game -->
+      <section id="section-game-match" class="tab-content">
+        <div class="game-instructions">
+          <h2>🚂 Trò chơi: Ghép Từ Chạy Tàu!</h2>
+          <p>Kéo các chữ tiếng Trung ở dưới thả vào <strong>toa tàu</strong> có nghĩa tiếng Việt tương ứng để giúp tàu chạy về ga nhé!</p>
+        </div>
+
+        <!-- Train Container -->
+        <div class="train-game-area">
+          <div class="railway-track-wrapper">
+            <div class="railway-track">
+              <!-- Train graphic -->
+              <div class="train-wrapper" id="train-sprite">
+                <!-- Locomotive (Đầu tàu) -->
+                <div class="locomotive">
+                  <div class="steam-chimney">
+                    <div class="steam-cloud cloud-1">💨</div>
+                    <div class="steam-cloud cloud-2">💨</div>
+                  </div>
+                  <div class="cab">🎒</div>
+                  <div class="wheel wheel-front"></div>
+                  <div class="wheel wheel-back"></div>
+                </div>
+                <!-- Carriages (Các toa tàu) -->
+                <div class="carriages-container" id="carriages-container">
+                  <!-- Drop zones will go here -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Words Dock -->
+          <div class="words-dock-container">
+            <h3>Kéo từ ở đây:</h3>
+            <div class="words-dock" id="words-dock">
+              <!-- Draggable word cards -->
+            </div>
+          </div>
+
+          <!-- Game Action Buttons -->
+          <div class="game-actions">
+            <button id="btn-reset-match" class="game-btn secondary-btn">Chơi Lại 🔄</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Quiz Game (Boss Battle) -->
+      <section id="section-game-quiz" class="tab-content">
+        
+        <!-- RPG Boss Battle Banner -->
+        <div class="boss-battle-container">
+          <div class="boss-arena">
+            <div class="fighter-hero" id="rpg-hero">🐼</div>
+            <div class="boss-vs-badge">VS</div>
+            <div class="fighter-boss" id="rpg-boss">🎨</div>
+          </div>
+          <div class="boss-info-panel">
+            <div class="boss-name">Họa Sĩ Lulu 🎨 tại Phượng Hoàng 🏮</div>
+            <div class="boss-hp-outer">
+              <div class="boss-hp-inner" id="boss-hp-fill" style="width: 100%;"></div>
+            </div>
+            <div class="player-lives-panel" id="player-lives">
+              <span class="player-live-heart" id="heart-1">❤️</span>
+              <span class="player-live-heart" id="heart-2">❤️</span>
+              <span class="player-live-heart" id="heart-3">❤️</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="game-instructions">
+          <h2>⚔️ Đấu Boss: Giúp Gấu Trúc LuLu Tung Chiêu!</h2>
+          <p>Trả lời đúng câu trắc nghiệm tiếng Trung dưới đây để tấn công Boss! Trả lời sai sẽ bị Boss phản công đấy nhé!</p>
+        </div>
+
+        <div class="quiz-container">
+          <!-- Score Board -->
+          <div class="quiz-header">
+            <div class="quiz-progress">
+              Câu hỏi: <span id="quiz-current-q">1</span>/<span id="quiz-total-q">5</span>
+            </div>
+            <div class="quiz-score" style="display:none;">
+              Điểm: <span id="quiz-score-val">0</span>
+            </div>
+          </div>
+
+          <!-- Question Card -->
+          <div class="quiz-card" id="quiz-card">
+            <div class="avatar-bubble">
+              <div class="mascot-avatar">🐼</div>
+              <div class="speech-bubble">
+                <p class="vietnamese-hint" id="quiz-hint">Đang tải...</p>
+                <div class="sentence-display" id="quiz-sentence">
+                  <!-- Question blank -->
+                </div>
+                <p class="sentence-pinyin" id="quiz-pinyin"></p>
+              </div>
+            </div>
+
+            <!-- Multiple Choice Options -->
+            <div class="quiz-options" id="quiz-options">
+              <!-- Options injected by JS -->
+            </div>
+
+            <div class="quiz-feedback" id="quiz-feedback">
+              <!-- Result feedback -->
+            </div>
+          </div>
+
+          <div class="game-actions">
+            <button id="btn-next-quiz" class="game-btn primary-btn hidden">Câu Tiếp Theo ➡️</button>
+            <button id="btn-reset-quiz" class="game-btn secondary-btn">Hồi phục máu và Đấu lại 🔄</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Modal for game completion/success -->
+    <div class="modal-overlay" id="success-modal">
+      <div class="modal-card">
+        <div class="modal-badge" id="modal-badge-icon">🏆</div>
+        <h2 id="modal-title">Xuất sắc quá Hana ơi!</h2>
+        <p id="modal-message">Bé đã hoàn thành xuất sắc thử thách rồi.</p>
+        
+        <div class="modal-stats" id="modal-stats">
+          <!-- Stats -->
+        </div>
+
+        <!-- Reporting Actions -->
+        <div class="report-box" id="report-box">
+          <button id="btn-pdf-download" class="report-action-btn pdf-btn">Tải Chứng Nhận (PDF) 📄</button>
+          <button id="btn-gchat-send" class="report-action-btn chat-btn">Gửi Báo Cáo Cho Mẹ 📨</button>
+          <div id="gchat-status" class="gchat-status"></div>
+        </div>
+
+        <div class="modal-footer-btns">
+          <button id="btn-modal-action" class="game-btn primary-btn">Chơi Lại</button>
+          <a href="../index.html" class="game-btn secondary-btn">Về Bản Đồ 🗺️</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Background Decoration -->
+    <div class="bg-decorations">
+      <div class="cloud cloud-slow">☁️</div>
+      <div class="cloud cloud-fast">☁️</div>
+      <div class="star star-1">⭐</div>
+      <div class="star star-2">✨</div>
+    </div>
+  </div>
+
+  <!-- Load config first, then application logic -->
+  <script src="../config.js"></script>
+  <script src="lesson_89_app.js"></script>
+</body>
+</html>
