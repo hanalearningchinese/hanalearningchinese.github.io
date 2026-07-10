@@ -5,9 +5,40 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   updateDashboardStats();
+
+  // Tab switching logic
+  const tabs = document.querySelectorAll('.dash-tab');
+  const panes = document.querySelectorAll('.tab-pane');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panes.forEach(p => p.classList.remove('active'));
+      
+      tab.classList.add('active');
+      const target = tab.getAttribute('data-tab');
+      const targetPane = document.getElementById(target);
+      if (targetPane) targetPane.classList.add('active');
+    });
+  });
+
 });
 
 function updateDashboardStats() {
+
+  const yct2Titles = {
+    81: { cn: "我可以坐这儿吗？", py: "Wǒ kěyǐ zuò zhè'r ma?", vi: "Tôi có thể ngồi đây không?" },
+    82: { cn: "你早上几点起床？", py: "Nǐ zǎoshang jǐ diǎn qǐchuáng?", vi: "Sáng mấy giờ bạn thức dậy?" },
+    83: { cn: "你的铅笔呢？", py: "Nǐ de qiānbǐ ne?", vi: "Bút chì của bạn đâu?" },
+    84: { cn: "书包里有两本书", py: "Shūbāo lǐ yǒu liǎng běn shū", vi: "Trong cặp sách có hai quyển sách" },
+    85: { cn: "你会不会做饭？", py: "Nǐ huì bú huì zuòfàn?", vi: "Bạn có biết nấu cơm không?" },
+    86: { cn: "包子多少钱一个？", py: "Bāozi duōshao qián yí ge?", vi: "Bánh bao bao nhiêu tiền một cái?" },
+    87: { cn: "今天比昨天热", py: "Jīntiān bǐ zuótiān rè", vi: "Hôm nay nóng hơn hôm qua" },
+    88: { cn: "马丁比我大三岁", py: "Mǎdīng bǐ wǒ dà sān suì", vi: "Martin lớn hơn tôi 3 tuổi" },
+    89: { cn: "你今天做什么了？", py: "Nǐ jīntiān zuò shénme le?", vi: "Hôm nay bạn đã làm gì?" },
+    90: { cn: "你怎么了？", py: "Nǐ zěnme le?", vi: "Bạn bị làm sao thế?" },
+    91: { cn: "我来北京一年了", py: "Wǒ lái Běijīng yì nián le", vi: "Tôi đến Bắc Kinh được một năm rồi" }
+  };
+
   // 1. Read completion status and scores from localStorage
   const lessons = {
     60: {
@@ -107,11 +138,88 @@ function updateDashboardStats() {
       url: 'lessons/lesson_73.html',
       yt: 'https://www.youtube.com/watch?v=UbuxXfm1gz4',
       unlocked: false
+    },
+    81: {
+      completed: localStorage.getItem('lesson_81_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_81_score') || '0'),
+      url: 'lessons/lesson_81.html',
+      yt: 'https://www.youtube.com/watch?v=R9j0v0bXN9Y',
+      unlocked: true
+    },
+    82: {
+      completed: localStorage.getItem('lesson_82_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_82_score') || '0'),
+      url: 'lessons/lesson_82.html',
+      yt: 'https://www.youtube.com/watch?v=R9j0v0bXN9Y',
+      unlocked: true
+    },
+    83: {
+      completed: localStorage.getItem('lesson_83_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_83_score') || '0'),
+      url: 'lessons/lesson_83.html',
+      yt: 'https://www.youtube.com/watch?v=R9j0v0bXN9Y',
+      unlocked: true
+    },
+    84: {
+      completed: localStorage.getItem('lesson_84_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_84_score') || '0'),
+      url: 'lessons/lesson_84.html',
+      yt: 'https://www.youtube.com/watch?v=R9j0v0bXN9Y',
+      unlocked: true
+    },
+    85: {
+      completed: localStorage.getItem('lesson_85_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_85_score') || '0'),
+      url: 'lessons/lesson_85.html',
+      yt: 'https://www.youtube.com/watch?v=R9j0v0bXN9Y',
+      unlocked: true
+    },
+    86: {
+      completed: localStorage.getItem('lesson_86_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_86_score') || '0'),
+      url: 'lessons/lesson_86.html',
+      yt: 'https://www.youtube.com/watch?v=R9j0v0bXN9Y',
+      unlocked: true
+    },
+    87: {
+      completed: localStorage.getItem('lesson_87_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_87_score') || '0'),
+      url: 'lessons/lesson_87.html',
+      yt: 'https://www.youtube.com/watch?v=R9j0v0bXN9Y',
+      unlocked: true
+    },
+    88: {
+      completed: localStorage.getItem('lesson_88_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_88_score') || '0'),
+      url: 'lessons/lesson_88.html',
+      yt: 'https://www.youtube.com/watch?v=R9j0v0bXN9Y',
+      unlocked: true
+    },
+    89: {
+      completed: localStorage.getItem('lesson_89_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_89_score') || '0'),
+      url: 'lessons/lesson_89.html',
+      yt: 'https://www.youtube.com/watch?v=R9j0v0bXN9Y',
+      unlocked: true
+    },
+    90: {
+      completed: localStorage.getItem('lesson_90_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_90_score') || '0'),
+      url: 'lessons/lesson_90.html',
+      yt: 'https://www.youtube.com/watch?v=R9j0v0bXN9Y',
+      unlocked: true
+    },
+    91: {
+      completed: localStorage.getItem('lesson_91_completed') === 'true',
+      score: parseInt(localStorage.getItem('lesson_91_score') || '0'),
+      url: 'lessons/lesson_91.html',
+      yt: 'https://www.youtube.com/watch?v=R9j0v0bXN9Y',
+      unlocked: true
     }
   };
 
   // Determine unlock status dynamically
-  const seq = [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72];
+  const seq = [60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73];
   for (let i = 0; i < seq.length - 1; i++) {
     if (lessons[seq[i]].completed) {
       lessons[seq[i+1]].unlocked = true;
@@ -136,7 +244,18 @@ function updateDashboardStats() {
     69: "Himalaya ❄️",
     70: "Siêu Thị 🛒",
     71: "Sở Thú 🦁",
-    72: "Hoạt Hình 🎬"
+    73: "Đầm Lầy 🌿",
+    81: "YCT 2 - Bài 1 坐 ⚓",
+    82: "YCT 2 - Bài 2 起床 🐚",
+    83: "YCT 2 - Bài 3 铅笔 ⛰️",
+    84: "YCT 2 - Bài 4 书包 🐼",
+    85: "YCT 2 - Bài 5 做饭 🏯",
+    86: "YCT 2 - Bài 6 包子 🏜️",
+    87: "YCT 2 - Bài 7 天气 🛡️",
+    88: "YCT 2 - Bài 8 岁 🏔️",
+    89: "YCT 2 - Bài 9 水果 🏮",
+    90: "YCT 2 - Bài 10 医院 ❄️",
+    91: "YCT 2 - Bài 11 学习 🌿"
   };
 
   // 2. Loop through lessons and update UI components
@@ -148,6 +267,17 @@ function updateDashboardStats() {
     const actions = document.getElementById(`actions-${num}`);
     const lockOverlay = document.getElementById(`lock-${num}`);
     const banner = document.getElementById(`banner-${num}`);
+
+    // Inject YCT 2 titles dynamically
+    if (num >= 81 && num <= 91) {
+      const titles = yct2Titles[num];
+      const cnEl = document.getElementById(`cn-title-${num}`);
+      const pyEl = document.getElementById(`py-title-${num}`);
+      const viEl = document.getElementById(`vi-title-${num}`);
+      if (cnEl) cnEl.textContent = titles.cn;
+      if (pyEl) pyEl.textContent = titles.py;
+      if (viEl) viEl.textContent = titles.vi;
+    }
 
     if (lesson.completed) {
       completedCount++;
@@ -180,7 +310,18 @@ function updateDashboardStats() {
       if (lockOverlay) lockOverlay.style.display = "none";
       if (banner) banner.style.backgroundImage = "url('magic_pen_banner.png')";
 
-      if (lesson.completed) {
+      // Inject YCT 2 titles dynamically
+    if (num >= 81 && num <= 91) {
+      const titles = yct2Titles[num];
+      const cnEl = document.getElementById(`cn-title-${num}`);
+      const pyEl = document.getElementById(`py-title-${num}`);
+      const viEl = document.getElementById(`vi-title-${num}`);
+      if (cnEl) cnEl.textContent = titles.cn;
+      if (pyEl) pyEl.textContent = titles.py;
+      if (viEl) viEl.textContent = titles.vi;
+    }
+
+    if (lesson.completed) {
         badge.textContent = "Đã dẹp Boss";
         badge.className = "status-badge completed";
         scoreText.textContent = `Điểm: ${lesson.score}/50`;
@@ -231,7 +372,7 @@ function updateDashboardStats() {
 
   // 3. Update Header Stats
   document.getElementById('total-points').textContent = totalPoints;
-  document.getElementById('completed-count').textContent = `${completedCount}/13`;
+  document.getElementById('completed-count').textContent = `${completedCount}/25`;
   
   // Update XP elements
   const xpCurrentEl = document.getElementById('xp-current');
