@@ -46,7 +46,7 @@
         <div class="stat-box">
           <span class="stat-icon">🗺️</span>
           <div class="stat-content">
-            <span class="stat-val" id="completed-count">0/13</span>
+            <span class="stat-val" id="completed-count">0/25</span>
             <span class="stat-label">Thành Phố Đi Qua</span>
           </div>
         </div>
@@ -65,7 +65,7 @@
       
       <div class="section-title-box">
         <h2>🗺️ Bản Đồ Hành Trình Phiêu Lưu Của Hana & LuLu</h2>
-        <p>Hana hãy cùng bạn Gấu Trúc LuLu thám hiểm 10 thành phố lớn, tích lũy XP thăng cấp và đánh bại các Boss cuối tuần tinh nghịch để thu thập đủ 10 Huy hiệu nhé! 🚀</p>
+        <p>Hana hãy cùng bạn Gấu Trúc LuLu thám hiểm bản đồ hoặc học Giáo trình chuẩn YCT 2, tích lũy XP thăng cấp và đánh bại các Boss tinh nghịch để thu thập Huy hiệu nhé! 🚀</p>
       </div>
 
       <!-- Badge Inventory Area -->
@@ -133,7 +133,19 @@
         </div>
       </div>
 
-      <!-- Lessons Grid -->
+      <!-- Tab Navigation -->
+      <div class="dashboard-tabs">
+        <button class="dash-tab active" data-tab="tab-lulu">
+          <span class="tab-icon">🗺️</span> Cuộc Phiêu Lưu LuLu (Bài 60-73)
+        </button>
+        <button class="dash-tab" data-tab="tab-yct2">
+          <span class="tab-icon">📚</span> Giáo Trình Chuẩn YCT 2 (Bài 1-11)
+        </button>
+      </div>
+
+      <!-- Tab Pane 1: Lulu Adventure -->
+      <div id="tab-lulu" class="tab-pane active">
+        <!-- Lessons Grid -->
       <div class="lessons-grid">
         
         <!-- Lesson 60: Unlocked -->
@@ -430,10 +442,247 @@
             </div>
           </div>
         </div>
-
-
-
       </div>
+      </div> <!-- End tab-lulu -->
+
+      <!-- Tab Pane 2: YCT 2 Standard Course -->
+      <div id="tab-yct2" class="tab-pane">
+        <div class="lessons-grid YCT2-grid">
+
+          <!-- Lesson 81: YCT 2 Lesson 1 -->
+          <div class="lesson-card unlocked" id="card-lesson-81">
+            <div class="lesson-card-banner" id="banner-81" style="background-image: url('magic_pen_banner.png');">
+              <span class="lesson-num">Bài 1</span>
+              <div class="lock-overlay" id="lock-81" style="display: none;">🔒</div>
+            </div>
+            <div class="lesson-card-body">
+              <h3 class="lesson-title-cn" id="cn-title-81">Tải...</h3>
+              <p class="lesson-title-py" id="py-title-81">Loading...</p>
+              <h4 class="lesson-title-vi" id="vi-title-81">Đang tải...</h4>
+              
+              <div class="lesson-status-bar">
+                <span class="status-badge" id="badge-status-81">Chưa Học</span>
+                <span class="score-text" id="score-text-81"></span>
+              </div>
+              <div class="lesson-card-actions" id="actions-81">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+          </div>
+    
+          <!-- Lesson 82: YCT 2 Lesson 2 -->
+          <div class="lesson-card unlocked" id="card-lesson-82">
+            <div class="lesson-card-banner" id="banner-82" style="background-image: url('magic_pen_banner.png');">
+              <span class="lesson-num">Bài 2</span>
+              <div class="lock-overlay" id="lock-82" style="display: none;">🔒</div>
+            </div>
+            <div class="lesson-card-body">
+              <h3 class="lesson-title-cn" id="cn-title-82">Tải...</h3>
+              <p class="lesson-title-py" id="py-title-82">Loading...</p>
+              <h4 class="lesson-title-vi" id="vi-title-82">Đang tải...</h4>
+              
+              <div class="lesson-status-bar">
+                <span class="status-badge" id="badge-status-82">Chưa Học</span>
+                <span class="score-text" id="score-text-82"></span>
+              </div>
+              <div class="lesson-card-actions" id="actions-82">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+          </div>
+    
+          <!-- Lesson 83: YCT 2 Lesson 3 -->
+          <div class="lesson-card unlocked" id="card-lesson-83">
+            <div class="lesson-card-banner" id="banner-83" style="background-image: url('magic_pen_banner.png');">
+              <span class="lesson-num">Bài 3</span>
+              <div class="lock-overlay" id="lock-83" style="display: none;">🔒</div>
+            </div>
+            <div class="lesson-card-body">
+              <h3 class="lesson-title-cn" id="cn-title-83">Tải...</h3>
+              <p class="lesson-title-py" id="py-title-83">Loading...</p>
+              <h4 class="lesson-title-vi" id="vi-title-83">Đang tải...</h4>
+              
+              <div class="lesson-status-bar">
+                <span class="status-badge" id="badge-status-83">Chưa Học</span>
+                <span class="score-text" id="score-text-83"></span>
+              </div>
+              <div class="lesson-card-actions" id="actions-83">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+          </div>
+    
+          <!-- Lesson 84: YCT 2 Lesson 4 -->
+          <div class="lesson-card unlocked" id="card-lesson-84">
+            <div class="lesson-card-banner" id="banner-84" style="background-image: url('magic_pen_banner.png');">
+              <span class="lesson-num">Bài 4</span>
+              <div class="lock-overlay" id="lock-84" style="display: none;">🔒</div>
+            </div>
+            <div class="lesson-card-body">
+              <h3 class="lesson-title-cn" id="cn-title-84">Tải...</h3>
+              <p class="lesson-title-py" id="py-title-84">Loading...</p>
+              <h4 class="lesson-title-vi" id="vi-title-84">Đang tải...</h4>
+              
+              <div class="lesson-status-bar">
+                <span class="status-badge" id="badge-status-84">Chưa Học</span>
+                <span class="score-text" id="score-text-84"></span>
+              </div>
+              <div class="lesson-card-actions" id="actions-84">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+          </div>
+    
+          <!-- Lesson 85: YCT 2 Lesson 5 -->
+          <div class="lesson-card unlocked" id="card-lesson-85">
+            <div class="lesson-card-banner" id="banner-85" style="background-image: url('magic_pen_banner.png');">
+              <span class="lesson-num">Bài 5</span>
+              <div class="lock-overlay" id="lock-85" style="display: none;">🔒</div>
+            </div>
+            <div class="lesson-card-body">
+              <h3 class="lesson-title-cn" id="cn-title-85">Tải...</h3>
+              <p class="lesson-title-py" id="py-title-85">Loading...</p>
+              <h4 class="lesson-title-vi" id="vi-title-85">Đang tải...</h4>
+              
+              <div class="lesson-status-bar">
+                <span class="status-badge" id="badge-status-85">Chưa Học</span>
+                <span class="score-text" id="score-text-85"></span>
+              </div>
+              <div class="lesson-card-actions" id="actions-85">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+          </div>
+    
+          <!-- Lesson 86: YCT 2 Lesson 6 -->
+          <div class="lesson-card unlocked" id="card-lesson-86">
+            <div class="lesson-card-banner" id="banner-86" style="background-image: url('magic_pen_banner.png');">
+              <span class="lesson-num">Bài 6</span>
+              <div class="lock-overlay" id="lock-86" style="display: none;">🔒</div>
+            </div>
+            <div class="lesson-card-body">
+              <h3 class="lesson-title-cn" id="cn-title-86">Tải...</h3>
+              <p class="lesson-title-py" id="py-title-86">Loading...</p>
+              <h4 class="lesson-title-vi" id="vi-title-86">Đang tải...</h4>
+              
+              <div class="lesson-status-bar">
+                <span class="status-badge" id="badge-status-86">Chưa Học</span>
+                <span class="score-text" id="score-text-86"></span>
+              </div>
+              <div class="lesson-card-actions" id="actions-86">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+          </div>
+    
+          <!-- Lesson 87: YCT 2 Lesson 7 -->
+          <div class="lesson-card unlocked" id="card-lesson-87">
+            <div class="lesson-card-banner" id="banner-87" style="background-image: url('magic_pen_banner.png');">
+              <span class="lesson-num">Bài 7</span>
+              <div class="lock-overlay" id="lock-87" style="display: none;">🔒</div>
+            </div>
+            <div class="lesson-card-body">
+              <h3 class="lesson-title-cn" id="cn-title-87">Tải...</h3>
+              <p class="lesson-title-py" id="py-title-87">Loading...</p>
+              <h4 class="lesson-title-vi" id="vi-title-87">Đang tải...</h4>
+              
+              <div class="lesson-status-bar">
+                <span class="status-badge" id="badge-status-87">Chưa Học</span>
+                <span class="score-text" id="score-text-87"></span>
+              </div>
+              <div class="lesson-card-actions" id="actions-87">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+          </div>
+    
+          <!-- Lesson 88: YCT 2 Lesson 8 -->
+          <div class="lesson-card unlocked" id="card-lesson-88">
+            <div class="lesson-card-banner" id="banner-88" style="background-image: url('magic_pen_banner.png');">
+              <span class="lesson-num">Bài 8</span>
+              <div class="lock-overlay" id="lock-88" style="display: none;">🔒</div>
+            </div>
+            <div class="lesson-card-body">
+              <h3 class="lesson-title-cn" id="cn-title-88">Tải...</h3>
+              <p class="lesson-title-py" id="py-title-88">Loading...</p>
+              <h4 class="lesson-title-vi" id="vi-title-88">Đang tải...</h4>
+              
+              <div class="lesson-status-bar">
+                <span class="status-badge" id="badge-status-88">Chưa Học</span>
+                <span class="score-text" id="score-text-88"></span>
+              </div>
+              <div class="lesson-card-actions" id="actions-88">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+          </div>
+    
+          <!-- Lesson 89: YCT 2 Lesson 9 -->
+          <div class="lesson-card unlocked" id="card-lesson-89">
+            <div class="lesson-card-banner" id="banner-89" style="background-image: url('magic_pen_banner.png');">
+              <span class="lesson-num">Bài 9</span>
+              <div class="lock-overlay" id="lock-89" style="display: none;">🔒</div>
+            </div>
+            <div class="lesson-card-body">
+              <h3 class="lesson-title-cn" id="cn-title-89">Tải...</h3>
+              <p class="lesson-title-py" id="py-title-89">Loading...</p>
+              <h4 class="lesson-title-vi" id="vi-title-89">Đang tải...</h4>
+              
+              <div class="lesson-status-bar">
+                <span class="status-badge" id="badge-status-89">Chưa Học</span>
+                <span class="score-text" id="score-text-89"></span>
+              </div>
+              <div class="lesson-card-actions" id="actions-89">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+          </div>
+    
+          <!-- Lesson 90: YCT 2 Lesson 10 -->
+          <div class="lesson-card unlocked" id="card-lesson-90">
+            <div class="lesson-card-banner" id="banner-90" style="background-image: url('magic_pen_banner.png');">
+              <span class="lesson-num">Bài 10</span>
+              <div class="lock-overlay" id="lock-90" style="display: none;">🔒</div>
+            </div>
+            <div class="lesson-card-body">
+              <h3 class="lesson-title-cn" id="cn-title-90">Tải...</h3>
+              <p class="lesson-title-py" id="py-title-90">Loading...</p>
+              <h4 class="lesson-title-vi" id="vi-title-90">Đang tải...</h4>
+              
+              <div class="lesson-status-bar">
+                <span class="status-badge" id="badge-status-90">Chưa Học</span>
+                <span class="score-text" id="score-text-90"></span>
+              </div>
+              <div class="lesson-card-actions" id="actions-90">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+          </div>
+    
+          <!-- Lesson 91: YCT 2 Lesson 11 -->
+          <div class="lesson-card unlocked" id="card-lesson-91">
+            <div class="lesson-card-banner" id="banner-91" style="background-image: url('magic_pen_banner.png');">
+              <span class="lesson-num">Bài 11</span>
+              <div class="lock-overlay" id="lock-91" style="display: none;">🔒</div>
+            </div>
+            <div class="lesson-card-body">
+              <h3 class="lesson-title-cn" id="cn-title-91">Tải...</h3>
+              <p class="lesson-title-py" id="py-title-91">Loading...</p>
+              <h4 class="lesson-title-vi" id="vi-title-91">Đang tải...</h4>
+              
+              <div class="lesson-status-bar">
+                <span class="status-badge" id="badge-status-91">Chưa Học</span>
+                <span class="score-text" id="score-text-91"></span>
+              </div>
+              <div class="lesson-card-actions" id="actions-91">
+                <!-- Injected by JS -->
+              </div>
+            </div>
+          </div>
+    
+        </div>
+      </div> <!-- End tab-yct2 -->
+
 
       <!-- Encouragement Mascot Card -->
       <div class="mascot-encouragement">
